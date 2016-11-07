@@ -1,0 +1,142 @@
+<?php
+
+use Drupal\Core\Url;
+
+function baas_ui_toolbar_alter(&$items) {
+  unset($items['home']);
+
+  $items['baas_data_manage'] = array(
+    '#type' => 'toolbar_item',
+    'tab' => array(
+      '#type' => 'link',
+      '#title' => t('Manage data'),
+      '#url' => Url::fromRoute('system.admin_content'),
+      '#attributes' => array(
+        'class' => array('toolbar-icon', 'toolbar-icon-system-admin-content'),
+      ),
+    ),
+    '#weight' => -35,
+  );
+  $items['baas_data_model'] = array(
+    '#type' => 'toolbar_item',
+    'tab' => array(
+      '#type' => 'link',
+      '#title' => t('Model data'),
+      '#url' => Url::fromRoute('system.admin_structure'),
+      '#attributes' => array(
+        'class' => array('toolbar-icon', 'toolbar-icon-system-admin-structure'),
+      ),
+    ),
+    '#weight' => -30,
+  );
+  $items['baas_data_access'] = array(
+    '#type' => 'toolbar_item',
+    'tab' => array(
+      '#type' => 'link',
+      '#title' => t('Access control'),
+      '#url' => Url::fromRoute('entity.user.collection'),
+      '#attributes' => array(
+        'class' => array('toolbar-icon', 'toolbar-icon-entity-user-collection'),
+      ),
+    ),
+    '#weight' => -25,
+  );
+  $items['baas_apis'] = array(
+    '#type' => 'toolbar_item',
+    'tab' => array(
+      '#type' => 'link',
+      '#title' => t('APIs'),
+      '#url' => Url::fromRoute('baas_ui.apis'),
+      '#attributes' => array(
+        'class' => array('toolbar-icon', 'toolbar-icon-system-modules-list'),
+      ),
+    ),
+    '#weight' => -20,
+  );
+
+  $items['baas_backend'] = array(
+    '#type' => 'toolbar_item',
+    'tab' => array(
+      '#type' => 'link',
+      '#title' => t('Manage back end'),
+      '#url' => Url::fromRoute('user.page'),
+      '#attributes' => array(
+        'class' => array('toolbar-icon', 'toolbar-icon-menu'),
+      ),
+    ),
+    'tray' => array(
+      '#heading' => t('Back end management'),
+      'user_links' => array(
+        '#theme' => 'links__toolbar_baas_ui',
+        '#links' => [
+          'configuration' => [
+            'title' => t('Configuration'),
+            'url' => Url::fromRoute('system.admin_config'),
+            'attributes' => [
+              'class' => [
+                'toolbar-icon',
+                'toolbar-icon-system-admin-config',
+              ],
+            ],
+          ],
+          'reports' => [
+            'title' => t('Reports'),
+            'url' => Url::fromRoute('system.admin_reports'),
+            'attributes' => [
+              'class' => [
+                'toolbar-icon',
+                'toolbar-icon-system-admin-reports',
+              ],
+            ],
+          ],
+          'help' => [
+            'title' => t('Help'),
+            'url' => Url::fromRoute('help.main'),
+            'attributes' => [
+              'class' => [
+                'toolbar-icon',
+                'toolbar-icon-help-main',
+              ],
+            ],
+          ],
+        ],
+        '#attributes' => array(
+          'class' => array('toolbar-baas-ui'),
+        ),
+      ),
+    ),
+    '#weight' => -15,
+  );
+
+  unset($items['administration']);
+
+
+}
+
+function baas_ui_menu_links_discovered_alter(&$links) {
+  unset($links['system.site_information_settings']);
+  unset($links['block.admin_display']);
+  unset($links['system.themes_page']);
+  unset($links['filter.tips_all']);
+  unset($links['entity.date_format.collection']);
+  unset($links['views_ui.reports_plugins']);
+  unset($links['system.rss_feeds_settings']);
+
+  $links['system.admin_content']['title'] = t('Data');
+  $links['system.admin_content']['description'] = t('Find and manage data.');
+  $links['system.admin_structure']['title'] = t('Data modeling');
+  $links['system.admin_structure']['description'] = t('Model data: content types, comment types, taxonomies …');
+  $links['system.modules_list']['parent'] = 'system.admin_config';
+
+
+  $links['entity.user.collection']['weight'] = 3;
+  $links['system.admin_config']['weight'] = 4;
+
+  $links['filter.admin_overview']['parent'] = 'system.admin_structure';
+
+  $links['system.admin_config']['title'] = t('Back end configuration');
+
+
+  $links['entity.user.collection']['title'] = t('Access control');
+  $links['user.admin_index']['title'] = t('Users');
+}

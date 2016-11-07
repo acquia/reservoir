@@ -1,0 +1,44 @@
+name: Backend as a Service
+type: profile
+description: 'Build a BaaS for your needs. Use Drupal solely as a data modeling tool & store.'
+version: VERSION
+core: 8.x
+dependencies:
+  # Drupal: fundamentals
+  - automated_cron
+  - block
+  - system
+  # Drupal: web services.
+  - hal
+  - rest
+  - serialization
+  # Data: modeling.
+  - comment
+  - datetime
+  - file
+  - image
+  - link
+  - node
+  - options
+  - path
+  - taxonomy
+  - text
+  - views
+  - views_ui
+  # Data: management.
+  - ckeditor
+  # Backend: management.
+  - config
+  - dblog
+  # Backend: UI.
+  - baas_ui
+  - help
+  - toolbar
+  - tour
+  # Backend: performance.
+  - page_cache
+  - dynamic_page_cache
+themes:
+  - seven
+
+# @todo until https://www.drupal.org/node/2825394 is fixed, you may need to modify \Drupal\Core\Config\ConfigInstaller::checkConfigurationToInstall() to not throw an exception.
