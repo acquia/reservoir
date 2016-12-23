@@ -1,6 +1,7 @@
 baas_ui.apis:
   path: '/apis'
   defaults:
-    _controller: '\Drupal\baas_ui\BaasUiController::apis'
+    _form: 'Drupal\baas_ui\Form\BaasUiForm'
+    _title: 'APIs'
   requirements:
     _access: 'TRUE'

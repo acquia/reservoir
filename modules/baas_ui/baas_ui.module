@@ -10,7 +10,7 @@ function baas_ui_toolbar_alter(&$items) {
     'tab' => array(
       '#type' => 'link',
       '#title' => t('Manage data'),
-      '#url' => Url::fromRoute('system.admin_content'),
+      '#url' => Url::fromRoute('<front>'),
       '#attributes' => array(
         'class' => array('toolbar-icon', 'toolbar-icon-system-admin-content'),
       ),
