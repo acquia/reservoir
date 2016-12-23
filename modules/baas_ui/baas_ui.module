@@ -22,7 +22,7 @@ function baas_ui_toolbar_alter(&$items) {
     'tab' => array(
       '#type' => 'link',
       '#title' => t('Model data'),
-      '#url' => Url::fromRoute('system.admin_structure'),
+      '#url' => Url::fromRoute('erd.admin'),
       '#attributes' => array(
         'class' => array('toolbar-icon', 'toolbar-icon-system-admin-structure'),
       ),

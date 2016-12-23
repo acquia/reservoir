@@ -1,0 +1,4 @@
+name: Entity Relationship Diagrams
+description: 'Provides dynamic entity relationship diagrams for all of your Drupal entities.'
+type: module
+core: 8.x

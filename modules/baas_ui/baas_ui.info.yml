@@ -8,3 +8,4 @@ configure: TBD
 required: true
 dependencies:
   - baas
+  - erd

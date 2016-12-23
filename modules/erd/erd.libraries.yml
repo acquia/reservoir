@@ -1,0 +1,51 @@
+main:
+  version: VERSION
+  js:
+    js/main.js: {}
+  css:
+    component:
+      css/main.css: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.ui.autocomplete
+    - core/jquery.once
+    - core/drupal
+    - erd/joint
+    - erd/svg.pan.zoom
+
+joint:
+  remote: http://jointjs.com/
+  version: VERSION
+  license:
+    name: 'MPL v2.0'
+    url: https://github.com/clientIO/joint/blob/master/LICENSE
+    gpl-compatible: true
+  js:
+    //cdnjs.cloudflare.com/ajax/libs/jointjs/0.9.7/joint.min.js: { type: external }
+  css:
+    component:
+      //cdnjs.cloudflare.com/ajax/libs/jointjs/0.9.7/joint.min.css: { type: external }
+  dependencies:
+    - core/jquery
+    - erd/lodash
+    - core/backbone
+
+lodash:
+  remote: https://lodash.com
+  version: 3.10.1
+  license:
+    name: 'MIT'
+    url: https://github.com/lodash/lodash/blob/master/LICENSE
+    gpl-compatible: true
+  js:
+    //cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js: { type: external }
+
+svg.pan.zoom:
+  remote: https://github.com/ariutta/svg-pan-zoom
+  version: 3.2.6
+  license:
+    name: 'MIT'
+    url: https://github.com/ariutta/svg-pan-zoom/blob/3.2.6/LICENSE
+    gpl-compatible: true
+  js:
+    //cdn.rawgit.com/ariutta/svg-pan-zoom/3.2.6/dist/svg-pan-zoom.min.js: { type: external }

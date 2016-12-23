@@ -1,0 +1,7 @@
+erd.admin:
+  path: '/admin/structure/erd'
+  defaults:
+    _controller: '\Drupal\erd\Controller\EntityRelationshipDiagramController::getMainDiagram'
+    _title: 'Entity Relationship Diagram'
+  requirements:
+    _permission: 'administer site configuration'

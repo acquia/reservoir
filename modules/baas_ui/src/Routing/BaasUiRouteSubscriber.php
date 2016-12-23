@@ -10,13 +10,14 @@ use Symfony\Component\Routing\RouteCollection;
  */
 class BaasUiRouteSubscriber extends RouteSubscriberBase {
 
-  static $disabledRouteNames = [
+  protected static $disabledRouteNames = [
     'system.themes_page',
     'system.theme_set_default',
     'system.theme_settings',
     'system.theme_settings_theme',
     'system.theme_uninstall',
     'system.theme_install',
+    'system.admin_structure',
   ];
 
   /**
@@ -33,7 +34,7 @@ class BaasUiRouteSubscriber extends RouteSubscriberBase {
           $route->setDefault('_title', 'Data');
           $route->setPath('/admin/data');
           break;
-        case 'system.admin_structure':
+        case 'erd.admin':
           $route->setDefault('_title', 'Data modeling');
           $route->setPath('/admin/modeling');
           break;

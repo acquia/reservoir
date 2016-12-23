@@ -1,0 +1,5 @@
+erd.admin:
+  title: 'Entity Relationship Diagram'
+  description: 'Provides dynamic entity relationship diagrams for all of your Drupal entities.'
+  route_name: erd.admin
+  parent: system.admin_structure
