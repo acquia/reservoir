@@ -5,9 +5,7 @@
  * Install, update and uninstall functions for the BaaS installation profile.
  */
 
-use Drupal\user\Entity\User;
-use Drupal\user\RoleInterface;
-use Drupal\shortcut\Entity\Shortcut;
+use Drupal\node\Entity\Node;
 
 /**
  * Implements hook_install().
@@ -18,9 +16,18 @@ use Drupal\shortcut\Entity\Shortcut;
  */
 function baas_install() {
   // Set front page to "/admin".
-  \Drupal::configFactory()->getEditable('system.site')->set('page.front', '/admin')->save(TRUE);
+  \Drupal::configFactory()->getEditable('system.site')->set('page.front', '/admin/data')->save(TRUE);
 
   // Allow visitor account creation with administrative approval.
   $user_settings = \Drupal::configFactory()->getEditable('user.settings');
   $user_settings->set('register', USER_REGISTER_VISITORS_ADMINISTRATIVE_APPROVAL)->save(TRUE);
+
+  Node::create([
+    'type' => 'article',
+    'title' => 'Hello world!',
+    'body' => [
+      'value' => 'The name "llama" was adopted by European settlers from native Peruvians.',
+      'format' => 'basic_html',
+    ],
+  ])->save();
 }
