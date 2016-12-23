@@ -240,6 +240,17 @@
           reAdjustWidths();
         }
       });
+
+      // @TRICKY HACK IN THE ERD MODULE TO LOAD SOMETHING BY DEFAULT
+      addBundle(drupalSettings.erd.entities.node.bundles.article);
+      graph.get('cells').findWhere({identifier: 'bundle:article'}).position(-300, -250);
+      addType(drupalSettings.erd.entities.user);
+      graph.get('cells').findWhere({identifier: 'type:user'}).position(200, -150);
+      addType(drupalSettings.erd.entities.file);
+      graph.get('cells').findWhere({identifier: 'type:file'}).position(200, 0);
+      addType(drupalSettings.erd.entities.taxonomy_term);
+      graph.get('cells').findWhere({identifier: 'type:taxonomy_term'}).position(200, 200);
+      reAdjustWidths();
     }
 
     function createGraph (element) {
