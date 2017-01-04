@@ -1,0 +1,5 @@
+services:
+  reservoir_ui.route_subscriber:
+    class: Drupal\reservoir_ui\Routing\ReservoirUiRouteSubscriber
+    tags:
+      - { name: event_subscriber }

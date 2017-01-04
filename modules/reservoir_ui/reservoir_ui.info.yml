@@ -1,0 +1,11 @@
+name: 'Reservoir UI'
+type: module
+description: 'Administrative interface for the Reservoir install profile.'
+package: Reservoir
+version: VERSION
+core: 8.x
+configure: TBD
+required: true
+dependencies:
+  - reservoir
+  - erd

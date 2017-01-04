@@ -1,17 +1,17 @@
 <?php
 
-namespace Drupal\baas_ui\Form;
+namespace Drupal\reservoir_ui\Form;
 
 use \Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 
-class BaasUiForm extends FormBase {
+class ReservoirUiForm extends FormBase {
 
   /**
    * {@inheritdoc}
    */
   public function getFormId() {
-    return 'baas_ui';
+    return 'reservoir_ui';
   }
 
   /**
@@ -79,7 +79,7 @@ HTML;
         '#attributes' => [
           'alt' => $this->t('JSON API logo'),
           'height' => 100,
-          'src' => 'modules/baas_ui/img/jsonapi.png',
+          'src' => 'modules/reservoir_ui/img/jsonapi.png',
           'style' => 'float:right',
         ]
       ],
@@ -121,7 +121,7 @@ HTML;
         '#attributes' => [
           'alt' => $this->t('JSON API logo'),
           'height' => 100,
-          'src' => 'modules/baas_ui/img/graphql.svg',
+          'src' => 'modules/reservoir_ui/img/graphql.svg',
           'style' => 'float:right',
         ]
       ],

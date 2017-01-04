@@ -1,7 +1,7 @@
-baas_ui.apis:
+reservoir_ui.apis:
   path: '/apis'
   defaults:
-    _form: 'Drupal\baas_ui\Form\BaasUiForm'
+    _form: 'Drupal\reservoir_ui\Form\ReservoirUiForm'
     _title: 'APIs'
   requirements:
     _access: 'TRUE'

@@ -1,14 +1,14 @@
 <?php
 
-namespace Drupal\baas_ui\Routing;
+namespace Drupal\reservoir_ui\Routing;
 
 use Drupal\Core\Routing\RouteSubscriberBase;
 use Symfony\Component\Routing\RouteCollection;
 
 /**
- * Subscriber for BaaS UI routes.
+ * Subscriber for Reservoir UI routes.
  */
-class BaasUiRouteSubscriber extends RouteSubscriberBase {
+class ReservoirUiRouteSubscriber extends RouteSubscriberBase {
 
   protected static $disabledRouteNames = [
     'system.themes_page',

@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Install, update and uninstall functions for the BaaS installation profile.
+ * Install, update and uninstall functions for the Reservoir install profile.
  */
 
 use Drupal\node\Entity\Node;
@@ -14,7 +14,7 @@ use Drupal\node\Entity\Node;
  *
  * @see system_install()
  */
-function baas_install() {
+function reservoir_install() {
   // Set front page to "/admin".
   \Drupal::configFactory()->getEditable('system.site')->set('page.front', '/admin/data')->save(TRUE);
 

@@ -2,10 +2,10 @@
 
 use Drupal\Core\Url;
 
-function baas_ui_toolbar_alter(&$items) {
+function reservoir_ui_toolbar_alter(&$items) {
   unset($items['home']);
 
-  $items['baas_data_manage'] = array(
+  $items['reservoir_data_manage'] = array(
     '#type' => 'toolbar_item',
     'tab' => array(
       '#type' => 'link',
@@ -17,7 +17,7 @@ function baas_ui_toolbar_alter(&$items) {
     ),
     '#weight' => -35,
   );
-  $items['baas_data_model'] = array(
+  $items['reservoir_data_model'] = array(
     '#type' => 'toolbar_item',
     'tab' => array(
       '#type' => 'link',
@@ -29,7 +29,7 @@ function baas_ui_toolbar_alter(&$items) {
     ),
     '#weight' => -30,
   );
-  $items['baas_data_access'] = array(
+  $items['reservoir_data_access'] = array(
     '#type' => 'toolbar_item',
     'tab' => array(
       '#type' => 'link',
@@ -41,12 +41,12 @@ function baas_ui_toolbar_alter(&$items) {
     ),
     '#weight' => -25,
   );
-  $items['baas_apis'] = array(
+  $items['reservoir_apis'] = array(
     '#type' => 'toolbar_item',
     'tab' => array(
       '#type' => 'link',
       '#title' => t('APIs'),
-      '#url' => Url::fromRoute('baas_ui.apis'),
+      '#url' => Url::fromRoute('reservoir_ui.apis'),
       '#attributes' => array(
         'class' => array('toolbar-icon', 'toolbar-icon-system-modules-list'),
       ),
@@ -54,7 +54,7 @@ function baas_ui_toolbar_alter(&$items) {
     '#weight' => -20,
   );
 
-  $items['baas_backend'] = array(
+  $items['reservoir_backend'] = array(
     '#type' => 'toolbar_item',
     'tab' => array(
       '#type' => 'link',
@@ -67,7 +67,7 @@ function baas_ui_toolbar_alter(&$items) {
     'tray' => array(
       '#heading' => t('Back end management'),
       'user_links' => array(
-        '#theme' => 'links__toolbar_baas_ui',
+        '#theme' => 'links__toolbar_reservoir_ui',
         '#links' => [
           'configuration' => [
             'title' => t('Configuration'),
@@ -101,7 +101,7 @@ function baas_ui_toolbar_alter(&$items) {
           ],
         ],
         '#attributes' => array(
-          'class' => array('toolbar-baas-ui'),
+          'class' => array('toolbar-reservoir-ui'),
         ),
       ),
     ),
@@ -113,7 +113,7 @@ function baas_ui_toolbar_alter(&$items) {
 
 }
 
-function baas_ui_menu_links_discovered_alter(&$links) {
+function reservoir_ui_menu_links_discovered_alter(&$links) {
   unset($links['system.site_information_settings']);
   unset($links['block.admin_display']);
   unset($links['system.themes_page']);

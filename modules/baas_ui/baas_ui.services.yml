@@ -1,5 +1,0 @@
-services:
-  baas_ui.route_subscriber:
-    class: Drupal\baas_ui\Routing\BaasUiRouteSubscriber
-    tags:
-      - { name: event_subscriber }
