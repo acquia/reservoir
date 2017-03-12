@@ -9,9 +9,8 @@ dependencies:
   - block
   - system
   # Drupal: web services.
-  - hal
-  - rest
   - serialization
+  - jsonapi
   # Data: modeling.
   - comment
   - datetime
@@ -24,7 +23,6 @@ dependencies:
   - taxonomy
   - text
   - views
-  - views_ui
   # Data: management.
   - ckeditor
   # Backend: management.
