@@ -1,0 +1,89 @@
+uuid: 4c678a01-a007-4d88-8e12-924471ce0216
+langcode: en
+status: true
+dependencies:
+  module:
+    - reservoir_ui
+id: reservoir-ui
+label: 'Using Reservoir'
+module: reservoir_ui
+routes:
+  -
+    route_name: system.admin_content
+tips:
+  reservoir-ui-welcome:
+    id: reservoir-ui-main
+    plugin: text
+    label: 'Welcome to Reservoir!'
+    body: Reservoir is a back end to power your front end.<br><br>Create data models, manage data, and expose it to clients via a <a href="http://jsonapi.org">JSON API</a>.<br><br>Powered by <a href="http://drupal.org/8">Drupal 8</a>!
+    weight: 1
+  reservoir-ui-welcome-data:
+    id: reservoir-ui-welcome-data
+    plugin: text
+    label: 'Managing data'
+    body: The starting point whenever you log in to Reservoir. We're there right now!
+    weight: 2
+    attributes:
+      data-class: path-frontpage .toolbar-tab a[href*="/"]
+  reservoir-ui-welcome-data-default-content:
+    id: reservoir-ui-welcome-data-defaul-contentt
+    plugin: text
+    label: 'Some data to start'
+    body: To help you get started, Reservoir created a "Hello world!" article for you.
+    weight: 3
+    attributes:
+      data-class: path-frontpage .block-system-main-block table tr:nth(1) td:nth(0)
+  reservoir-ui-welcome-data-default-content-edit:
+    id: reservoir-ui-welcome-data-default-content-edit
+    plugin: text
+    label: 'Edit away!'
+    body: Feel free to edit it, to get a sense of what you could do. Or delete it, the choice is yours.
+    weight: 4
+    attributes:
+      data-class: path-frontpage .block-system-main-block table tr:nth(1) td:nth(5)
+  reservoir-ui-welcome-apis:
+    id: reservoir-ui-welcome-apis
+    plugin: text
+    label: 'APIs'
+    body: Explore the APIs that Reservoir is currently providing, to make your data & data models available for clients!<br><br>Including documentation and live demos.
+    weight: 5
+    attributes:
+      data-class: path-frontpage .toolbar-tab a[href*="/apis"]
+  reservoir-ui-welcome-user1-warning:
+    id: reservoir-ui-welcome-user1-warning
+    plugin: text
+    label: 'With great power…'
+    body: Only user 1 (the all-powerful user!) can see what's in the remainder of this tour…<br><br><em>That's you!</em>
+    weight: 6
+    attributes:
+      data-text: I can handle it 😎
+  reservoir-ui-welcome-modeling:
+    id: reservoir-ui-welcome-modeling
+    plugin: text
+    label: 'Visual data modeling!'
+    body: Reservoir ships with an "Article" data model. Go here next to see a visual representation of its relationships. Modify or delete it, and add your own!
+    weight: 7
+    attributes:
+      data-class: path-frontpage .toolbar-tab a[href*="/admin/modeling"]
+  reservoir-ui-welcome-access-control:
+    id: reservoir-ui-welcome-access-control
+    plugin: text
+    label: 'Users, roles & permissions'
+    body: Add more users, or even allow them to sign up themselves. Use roles to control what every user is allowed to see and do.
+    weight: 8
+    attributes:
+      data-class: path-frontpage .toolbar-tab a[href*="/access/users"]
+  reservoir-ui-welcome-everything-else:
+    id: reservoir-ui-welcome-everything-else
+    plugin: text
+    label: 'Power of Drupal 8'
+    body: And if you want to, you can access the full Drupal 8 back end. Of course only user 1 can do this. Install extra modules, tweak Drupal internals — anything is possible!
+    weight: 9
+    attributes:
+      data-class: path-frontpage .toolbar-tab a.toolbar-icon-menu
+  reservoir-ui-welcome-enjoy:
+    id: reservoir-ui-welcome-enjoy
+    plugin: text
+    label: 'Enjoy!'
+    body: And send feedback, 👍 or 👎 !
+    weight: 10

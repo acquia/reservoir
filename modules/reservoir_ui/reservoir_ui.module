@@ -17,6 +17,18 @@ function reservoir_ui_toolbar_alter(&$items) {
     ),
     '#weight' => -35,
   );
+  $items['reservoir_apis'] = array(
+    '#type' => 'toolbar_item',
+    'tab' => array(
+      '#type' => 'link',
+      '#title' => t('APIs'),
+      '#url' => Url::fromRoute('reservoir_ui.apis'),
+      '#attributes' => array(
+        'class' => array('toolbar-icon', 'toolbar-icon-system-modules-list'),
+      ),
+    ),
+    '#weight' => -30,
+  );
   $items['reservoir_data_model'] = array(
     '#type' => 'toolbar_item',
     'tab' => array(
@@ -27,7 +39,7 @@ function reservoir_ui_toolbar_alter(&$items) {
         'class' => array('toolbar-icon', 'toolbar-icon-system-admin-structure'),
       ),
     ),
-    '#weight' => -30,
+    '#weight' => -25,
   );
   $items['reservoir_data_access'] = array(
     '#type' => 'toolbar_item',
@@ -37,18 +49,6 @@ function reservoir_ui_toolbar_alter(&$items) {
       '#url' => Url::fromRoute('entity.user.collection'),
       '#attributes' => array(
         'class' => array('toolbar-icon', 'toolbar-icon-entity-user-collection'),
-      ),
-    ),
-    '#weight' => -25,
-  );
-  $items['reservoir_apis'] = array(
-    '#type' => 'toolbar_item',
-    'tab' => array(
-      '#type' => 'link',
-      '#title' => t('APIs'),
-      '#url' => Url::fromRoute('reservoir_ui.apis'),
-      '#attributes' => array(
-        'class' => array('toolbar-icon', 'toolbar-icon-system-modules-list'),
       ),
     ),
     '#weight' => -20,
