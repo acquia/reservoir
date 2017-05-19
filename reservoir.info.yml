@@ -3,6 +3,8 @@ type: profile
 description: 'Build a BaaS for your needs. Use Drupal solely as a data modeling tool & store.'
 version: VERSION
 core: 8.x
+distribution:
+  name: Reservoir
 dependencies:
   # Drupal: fundamentals
   - automated_cron
