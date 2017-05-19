@@ -1,0 +1,8 @@
+welcome:
+  version: VERSION
+  js:
+    js/welcome.js: {}
+  dependencies:
+    - core/domready
+    - core/jquery
+    - tour/tour

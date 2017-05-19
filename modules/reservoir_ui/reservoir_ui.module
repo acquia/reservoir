@@ -2,6 +2,13 @@
 
 use Drupal\Core\Url;
 
+/**
+ * Implements hook_page_attachments().
+ */
+function reservoir_ui_page_attachments(array &$page) {
+  $page['#attached']['library'][] = 'reservoir_ui/welcome';
+}
+
 function reservoir_ui_toolbar_alter(&$items) {
   unset($items['home']);
 
