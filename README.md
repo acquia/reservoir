@@ -10,4 +10,6 @@
 
 # Future
 
-We'll add a `composer.json` file.
+- Support composer-based installation.
+- Switch from Basic Auth to OAuth2, using <https://www.drupal.org/project/simple_oauth>
+

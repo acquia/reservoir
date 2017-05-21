@@ -13,6 +13,7 @@ dependencies:
   # Drupal: web services.
   - serialization
   - jsonapi
+  - basic_auth
   # Data: modeling.
   - comment
   - datetime

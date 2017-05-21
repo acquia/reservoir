@@ -136,32 +136,6 @@ HTML;
       '#button_type' => 'primary',
     ];
 
-    $form['separator'] = [
-      '#markup' => '<hr><hr><hr>',
-    ];
-
-    $form['authentication'] = [
-      '#type' => 'fieldset',
-    ];
-    $form['authentication']['title'] = [
-      '#markup' => '<h2>Authentication mechanism</h2>',
-    ];
-    $form['authentication']['choice'] = [
-      '#type' => 'checkboxes',
-      '#options' => [
-        'oauth2' => $this->t('OAuth2'),
-        'basic_auth' => $this->t('HTTP Basic Authentication'),
-        'cookie' => $this->t('Cookie (not recommended)'),
-      ],
-    ];
-    $form['authentication']['actions']['#type'] = 'actions';
-    $form['authentication']['actions']['submit'] = [
-      '#type' => 'submit',
-      '#value' => $this->t('Save'),
-      '#button_type' => 'primary',
-    ];
-
-
     // By default, render the form using system-config-form.html.twig.
     $form['#theme'] = 'system_config_form';
 
