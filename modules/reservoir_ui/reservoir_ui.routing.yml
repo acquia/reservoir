@@ -1,13 +1,13 @@
 reservoir_ui.api:
-  path: '/api'
+  path: '/admin/api'
   defaults:
-    _form: 'Drupal\reservoir_ui\Form\ApiForm'
-    _title: 'API'
+    _controller: '\Drupal\openapi_docs\Controller\SwaggerUIController::openApiResources'
+  methods: [GET]
   requirements:
-    _access: 'TRUE'
+    _permission: 'access openapi api docs'
 
 reservoir_ui.api.advanced:
-  path: '/api/advanced'
+  path: '/admin/api/advanced'
   defaults:
     _form: 'Drupal\reservoir_ui\Form\ApiAdvancedForm'
     _title: 'Advanced'
