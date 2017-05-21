@@ -21,7 +21,7 @@ tips:
     id: reservoir-ui-welcome-data
     plugin: text
     label: 'Managing data'
-    body: The starting point whenever you log in to Reservoir. We're there right now!
+    body: The starting point whenever you log in to Reservoir. We're there right now!<br><br><em>For users with the <q>Data manager</q> role.</em>
     weight: 2
     attributes:
       data-class: path-frontpage .toolbar-tab a[href*="/"]
@@ -45,7 +45,7 @@ tips:
     id: reservoir-ui-welcome-api
     plugin: text
     label: 'API'
-    body: Explore the API that Reservoir is currently providing, to make your data & data models available for clients!<br><br>Including documentation and live demos.
+    body: Explore the API that Reservoir is currently providing, to make your data & data models available for clients!<br><br>Including documentation and live demos.<br><br><em>For users with the <q>API client</q> role.</em>
     weight: 5
     attributes:
       data-class: path-frontpage .toolbar-tab a[href*="/admin/api"]
@@ -69,7 +69,7 @@ tips:
     id: reservoir-ui-welcome-access-control
     plugin: text
     label: 'Users, roles & permissions'
-    body: Add more users, or even allow them to sign up themselves. Use roles to control what every user is allowed to see and do.
+    body: Add more users, or even allow them to sign up themselves. Use roles to control what every user is allowed to see and do.<br><br><em>By default, Reservoir provides <q>Data manager</q> and <q>API client</q> roles.</em>
     weight: 8
     attributes:
       data-class: path-frontpage .toolbar-tab a[href*="/access/users"]

@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - reservoir_ui
+id: api_client
+label: 'API client'
+weight: 1
+is_admin: false
+permissions:
+  # Docs.
+  - 'access openapi api docs'
+  # Entity permissions.
+  - 'access comments'
+  - 'create article content'
+  - 'edit own article content'
+  - 'edit own comments'
+  - 'post comments'
