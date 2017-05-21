@@ -1,0 +1,9 @@
+reservoir_ui.api:
+  route_name: reservoir_ui.api
+  title: API
+  base_route: reservoir_ui.api
+
+reservoir_ui.api.advanced:
+  route_name: reservoir_ui.api.advanced
+  title: Advanced
+  base_route: reservoir_ui.api

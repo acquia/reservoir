@@ -41,14 +41,14 @@ tips:
     weight: 4
     attributes:
       data-class: path-frontpage .block-system-main-block table tr:nth(1) td:nth(5)
-  reservoir-ui-welcome-apis:
-    id: reservoir-ui-welcome-apis
+  reservoir-ui-welcome-api:
+    id: reservoir-ui-welcome-api
     plugin: text
-    label: 'APIs'
-    body: Explore the APIs that Reservoir is currently providing, to make your data & data models available for clients!<br><br>Including documentation and live demos.
+    label: 'API'
+    body: Explore the API that Reservoir is currently providing, to make your data & data models available for clients!<br><br>Including documentation and live demos.
     weight: 5
     attributes:
-      data-class: path-frontpage .toolbar-tab a[href*="/apis"]
+      data-class: path-frontpage .toolbar-tab a[href*="/api"]
   reservoir-ui-welcome-user1-warning:
     id: reservoir-ui-welcome-user1-warning
     plugin: text

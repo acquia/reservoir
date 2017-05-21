@@ -1,7 +1,15 @@
-reservoir_ui.apis:
-  path: '/apis'
+reservoir_ui.api:
+  path: '/api'
   defaults:
-    _form: 'Drupal\reservoir_ui\Form\ReservoirUiForm'
-    _title: 'APIs'
+    _form: 'Drupal\reservoir_ui\Form\ApiForm'
+    _title: 'API'
+  requirements:
+    _access: 'TRUE'
+
+reservoir_ui.api.advanced:
+  path: '/api/advanced'
+  defaults:
+    _form: 'Drupal\reservoir_ui\Form\ApiAdvancedForm'
+    _title: 'Advanced'
   requirements:
     _access: 'TRUE'

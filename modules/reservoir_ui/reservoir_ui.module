@@ -24,12 +24,12 @@ function reservoir_ui_toolbar_alter(&$items) {
     ),
     '#weight' => -35,
   );
-  $items['reservoir_apis'] = array(
+  $items['reservoir_api'] = array(
     '#type' => 'toolbar_item',
     'tab' => array(
       '#type' => 'link',
-      '#title' => t('APIs'),
-      '#url' => Url::fromRoute('reservoir_ui.apis'),
+      '#title' => t('API'),
+      '#url' => Url::fromRoute('reservoir_ui.api'),
       '#attributes' => array(
         'class' => array('toolbar-icon', 'toolbar-icon-system-modules-list'),
       ),

@@ -5,13 +5,13 @@ namespace Drupal\reservoir_ui\Form;
 use \Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 
-class ReservoirUiForm extends FormBase {
+class ApiAdvancedForm extends FormBase {
 
   /**
    * {@inheritdoc}
    */
   public function getFormId() {
-    return 'reservoir_ui';
+    return 'reservoir_ui_api_advanced';
   }
 
   /**
@@ -79,7 +79,7 @@ HTML;
         '#attributes' => [
           'alt' => $this->t('JSON API logo'),
           'height' => 100,
-          'src' => 'modules/reservoir_ui/img/jsonapi.png',
+          'src' => file_create_url(drupal_get_path('module', 'reservoir_ui') . '/img/jsonapi.png'),
           'style' => 'float:right',
         ]
       ],
@@ -119,9 +119,9 @@ HTML;
         '#type' => 'html_tag',
         '#tag' => 'img',
         '#attributes' => [
-          'alt' => $this->t('JSON API logo'),
+          'alt' => $this->t('GraphQL logo'),
           'height' => 100,
-          'src' => 'modules/reservoir_ui/img/graphql.svg',
+          'src' => file_create_url(drupal_get_path('module', 'reservoir_ui') . '/img/graphql.svg'),
           'style' => 'float:right',
         ]
       ],
