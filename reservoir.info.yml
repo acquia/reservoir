@@ -28,7 +28,6 @@ dependencies:
   - path
   - taxonomy
   - text
-  - views
   # Data: management.
   - ckeditor
   # Backend: management.
