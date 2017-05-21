@@ -12,4 +12,4 @@
 
 - Support composer-based installation.
 - Switch from Basic Auth to OAuth2, using <https://www.drupal.org/project/simple_oauth>
-
+- Support GraphQL once it matures: <https://www.drupal.org/project/graphql>
