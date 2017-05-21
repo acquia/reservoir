@@ -14,6 +14,9 @@ dependencies:
   - serialization
   - jsonapi
   - basic_auth
+  - schemata
+  - openapi
+  - openapi_docs
   # Data: modeling.
   - comment
   - datetime
