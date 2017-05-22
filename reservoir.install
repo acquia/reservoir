@@ -16,7 +16,7 @@ use Drupal\node\Entity\Node;
  */
 function reservoir_install() {
   // Set front page to "/admin".
-  \Drupal::configFactory()->getEditable('system.site')->set('page.front', '/admin/data')->save(TRUE);
+  \Drupal::configFactory()->getEditable('system.site')->set('page.front', '/admin/content')->save(TRUE);
 
   // Allow visitor account creation with administrative approval.
   $user_settings = \Drupal::configFactory()->getEditable('user.settings');

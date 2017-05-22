@@ -34,15 +34,12 @@ class ReservoirUiRouteSubscriber implements EventSubscriberInterface  {
 
     foreach ($collection->all() as $name => $route) {
       switch ($name) {
-        case 'system.admin_content':
-          $route->setDefault('_title', 'Data');
-          $route->setPath('/admin/data');
-          break;
         case 'entity.node_type.collection':
-          $route->setPath('/admin/modeling');
+          $route->setPath('/admin/models');
+          $route->setDefault('_title', 'Content models');
           break;
         case 'entity.node_type.edit_form':
-          $route->setPath('/admin/modeling/{node_type}');
+          $route->setPath('/admin/models/{node_type}');
           break;
         case 'entity.user.collection':
           $route->setDefault('_title', 'Users');
@@ -66,7 +63,8 @@ class ReservoirUiRouteSubscriber implements EventSubscriberInterface  {
           $route->setDefault('_title_callback', '\Drupal\reservoir_ui\Routing\ReservoirUiRouteSubscriber::manageFieldsTitle');
           break;
         case 'node.type_add':
-          $route->setPath('/admin/modeling/add');
+          $route->setPath('/admin/models/add');
+          $route->setDefault('_title', 'Add content model');
           break;
         case 'entity.entity_form_display.node.default':
           $route->setRequirement('_access', 'FALSE');

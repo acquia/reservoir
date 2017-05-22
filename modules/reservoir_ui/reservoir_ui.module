@@ -9,14 +9,18 @@ function reservoir_ui_page_attachments(array &$page) {
   $page['#attached']['library'][] = 'reservoir_ui/welcome';
 }
 
+function reservoir_ui_menu_local_actions_alter(&$local_actions) {
+  $local_actions['node.type_add']['title'] = 'Add content model';
+}
+
 function reservoir_ui_toolbar_alter(&$items) {
   unset($items['home']);
 
-  $items['reservoir_data_manage'] = array(
+  $items['reservoir_content'] = array(
     '#type' => 'toolbar_item',
     'tab' => array(
       '#type' => 'link',
-      '#title' => t('Manage content'),
+      '#title' => t('Content'),
       '#url' => Url::fromRoute('<front>'),
       '#attributes' => array(
         'class' => array('toolbar-icon', 'toolbar-icon-system-admin-content'),
@@ -36,11 +40,11 @@ function reservoir_ui_toolbar_alter(&$items) {
     ),
     '#weight' => -30,
   );
-  $items['reservoir_data_model'] = array(
+  $items['reservoir_content_models'] = array(
     '#type' => 'toolbar_item',
     'tab' => array(
       '#type' => 'link',
-      '#title' => t('Model content'),
+      '#title' => t('Content models'),
       '#url' => Url::fromRoute('entity.node_type.collection'),
       '#attributes' => array(
         'class' => array('toolbar-icon', 'toolbar-icon-system-admin-structure'),

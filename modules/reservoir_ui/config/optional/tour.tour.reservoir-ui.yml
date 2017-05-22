@@ -15,26 +15,26 @@ tips:
     id: reservoir-ui-main
     plugin: text
     label: 'Welcome to Reservoir!'
-    body: Reservoir is a back end to power your front end.<br><br>Create data models, manage data, and expose it to clients via a <a href="http://jsonapi.org">JSON API</a>.<br><br>Powered by <a href="http://drupal.org/8">Drupal 8</a>!
+    body: Reservoir is a back end to power your front end.<br><br>Create content models, administer content, and expose it to clients via a <a href="http://jsonapi.org">JSON API</a>.<br><br>Powered by <a href="http://drupal.org/8">Drupal 8</a>!
     weight: 1
-  reservoir-ui-welcome-data:
-    id: reservoir-ui-welcome-data
+  reservoir-ui-welcome-content:
+    id: reservoir-ui-welcome-content
     plugin: text
-    label: 'Managing data'
+    label: 'Administering content'
     body: The starting point whenever you log in to Reservoir. We're there right now!<br><br><em>For users with the <q>Content administrator</q> role.</em>
     weight: 2
     attributes:
       data-class: path-frontpage .toolbar-tab a[href*="/"]
-  reservoir-ui-welcome-data-default-content:
-    id: reservoir-ui-welcome-data-defaul-contentt
+  reservoir-ui-welcome-content-default:
+    id: reservoir-ui-welcome-content-default
     plugin: text
-    label: 'Some data to start'
+    label: 'Some content to start'
     body: To help you get started, Reservoir created a "Hello world!" article for you.
     weight: 3
     attributes:
       data-class: path-frontpage .block-system-main-block table tr:nth(1) td:nth(0)
-  reservoir-ui-welcome-data-default-content-edit:
-    id: reservoir-ui-welcome-data-default-content-edit
+  reservoir-ui-welcome-content-default-edit:
+    id: reservoir-ui-welcome-content-default-edit
     plugin: text
     label: 'Edit away!'
     body: Feel free to edit it, to get a sense of what you could do. Or delete it, the choice is yours.
@@ -45,7 +45,7 @@ tips:
     id: reservoir-ui-welcome-api
     plugin: text
     label: 'API'
-    body: Explore the API that Reservoir is currently providing, to make your data & data models available for clients!<br><br>Including documentation and live demos.<br><br><em>For users with the <q>API client</q> role.</em>
+    body: Explore the API that Reservoir is currently providing, to make your content & content models available for clients!<br><br>Including documentation and live demos.<br><br><em>For users with the <q>API client</q> role.</em>
     weight: 5
     attributes:
       data-class: path-frontpage .toolbar-tab a[href*="/admin/api"]
@@ -57,14 +57,14 @@ tips:
     weight: 6
     attributes:
       data-text: I can handle it 😎
-  reservoir-ui-welcome-modeling:
-    id: reservoir-ui-welcome-modeling
+  reservoir-ui-welcome-models:
+    id: reservoir-ui-welcome-models
     plugin: text
-    label: 'Data modeling!'
-    body: Reservoir ships with an "Article" data model. You can create as many data models as you want for your needs!
+    label: 'Content modeling!'
+    body: Reservoir ships with an "Article" content model. You can create as many content models as you want for your needs!
     weight: 7
     attributes:
-      data-class: path-frontpage .toolbar-tab a[href*="/admin/modeling"]
+      data-class: path-frontpage .toolbar-tab a[href*="/admin/models"]
   reservoir-ui-welcome-access-control:
     id: reservoir-ui-welcome-access-control
     plugin: text
