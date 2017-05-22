@@ -1,5 +1,6 @@
 <?php
 
+use Drupal\Core\Access\AccessResultForbidden;
 use Drupal\Core\Url;
 
 /**
@@ -11,6 +12,14 @@ function reservoir_ui_page_attachments(array &$page) {
 
 function reservoir_ui_menu_local_actions_alter(&$local_actions) {
   $local_actions['node.type_add']['title'] = 'Add content model';
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function reservoir_ui_form_node_type_edit_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  $form['submission']['preview_mode']['#access'] = new AccessResultForbidden();
+  $form['display']['#access'] = new AccessResultForbidden();
 }
 
 function reservoir_ui_toolbar_alter(&$items) {

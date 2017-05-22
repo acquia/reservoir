@@ -21,7 +21,7 @@ content:
     weight: 0
     settings: {  }
     third_party_settings: {  }
-    label: hidden
+    label: above
   field_image:
     type: image
     weight: -1
@@ -29,7 +29,7 @@ content:
       image_style: large
       image_link: ''
     third_party_settings: {  }
-    label: hidden
+    label: above
   field_tags:
     type: entity_reference_label
     weight: 10
@@ -39,6 +39,3 @@ content:
     third_party_settings: {  }
   links:
     weight: 100
-hidden:
-  field_image: true
-  field_tags: true
