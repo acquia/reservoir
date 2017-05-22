@@ -21,7 +21,7 @@ tips:
     id: reservoir-ui-welcome-data
     plugin: text
     label: 'Managing data'
-    body: The starting point whenever you log in to Reservoir. We're there right now!<br><br><em>For users with the <q>Data manager</q> role.</em>
+    body: The starting point whenever you log in to Reservoir. We're there right now!<br><br><em>For users with the <q>Content administrator</q> role.</em>
     weight: 2
     attributes:
       data-class: path-frontpage .toolbar-tab a[href*="/"]
@@ -60,8 +60,8 @@ tips:
   reservoir-ui-welcome-modeling:
     id: reservoir-ui-welcome-modeling
     plugin: text
-    label: 'Visual data modeling!'
-    body: Reservoir ships with an "Article" data model. Go here next to see a visual representation of its relationships. Modify or delete it, and add your own!
+    label: 'Data modeling!'
+    body: Reservoir ships with an "Article" data model. You can create as many data models as you want for your needs!
     weight: 7
     attributes:
       data-class: path-frontpage .toolbar-tab a[href*="/admin/modeling"]
@@ -69,7 +69,7 @@ tips:
     id: reservoir-ui-welcome-access-control
     plugin: text
     label: 'Users, roles & permissions'
-    body: Add more users, or even allow them to sign up themselves. Use roles to control what every user is allowed to see and do.<br><br><em>By default, Reservoir provides <q>Data manager</q> and <q>API client</q> roles.</em>
+    body: Add more users, or even allow them to sign up themselves. Use roles to control what every user is allowed to see and do.<br><br><em>By default, Reservoir provides <q>Content administrator</q> and <q>API client</q> roles.</em>
     weight: 8
     attributes:
       data-class: path-frontpage .toolbar-tab a[href*="/access/users"]

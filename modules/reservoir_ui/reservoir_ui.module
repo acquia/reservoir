@@ -16,7 +16,7 @@ function reservoir_ui_toolbar_alter(&$items) {
     '#type' => 'toolbar_item',
     'tab' => array(
       '#type' => 'link',
-      '#title' => t('Manage data'),
+      '#title' => t('Manage content'),
       '#url' => Url::fromRoute('<front>'),
       '#attributes' => array(
         'class' => array('toolbar-icon', 'toolbar-icon-system-admin-content'),
@@ -40,8 +40,8 @@ function reservoir_ui_toolbar_alter(&$items) {
     '#type' => 'toolbar_item',
     'tab' => array(
       '#type' => 'link',
-      '#title' => t('Model data'),
-      '#url' => Url::fromRoute('erd.admin'),
+      '#title' => t('Model content'),
+      '#url' => Url::fromRoute('entity.node_type.collection'),
       '#attributes' => array(
         'class' => array('toolbar-icon', 'toolbar-icon-system-admin-structure'),
       ),

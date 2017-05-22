@@ -35,6 +35,7 @@ dependencies:
   - dblog
   # Backend: UI.
   - reservoir_ui
+  - field_ui
   - help
   - toolbar
   - tour

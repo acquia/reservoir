@@ -2,13 +2,15 @@
 
 namespace Drupal\reservoir_ui\Routing;
 
-use Drupal\Core\Routing\RouteSubscriberBase;
-use Symfony\Component\Routing\RouteCollection;
+use Drupal\Core\Routing\RouteBuildEvent;
+use Drupal\Core\Routing\RoutingEvents;
+use Drupal\node\NodeTypeInterface;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
  * Subscriber for Reservoir UI routes.
  */
-class ReservoirUiRouteSubscriber extends RouteSubscriberBase {
+class ReservoirUiRouteSubscriber implements EventSubscriberInterface  {
 
   protected static $disabledRouteNames = [
     'system.themes_page',
@@ -21,9 +23,11 @@ class ReservoirUiRouteSubscriber extends RouteSubscriberBase {
   ];
 
   /**
-   * {@inheritdoc}
+   * @param \Drupal\Core\Routing\RouteBuildEvent $event
+   *   The route build event.
    */
-  protected function alterRoutes(RouteCollection $collection) {
+  public function alterRoutes(RouteBuildEvent $event) {
+    $collection = $event->getRouteCollection();
     foreach (static::$disabledRouteNames as $route_name) {
       $collection->get($route_name)->setRequirement('_access', 'FALSE');
     }
@@ -34,9 +38,11 @@ class ReservoirUiRouteSubscriber extends RouteSubscriberBase {
           $route->setDefault('_title', 'Data');
           $route->setPath('/admin/data');
           break;
-        case 'erd.admin':
-          $route->setDefault('_title', 'Data modeling');
+        case 'entity.node_type.collection':
           $route->setPath('/admin/modeling');
+          break;
+        case 'entity.node_type.edit_form':
+          $route->setPath('/admin/modeling/{node_type}');
           break;
         case 'entity.user.collection':
           $route->setDefault('_title', 'Users');
@@ -50,6 +56,44 @@ class ReservoirUiRouteSubscriber extends RouteSubscriberBase {
           break;
       }
     }
+  }
+
+  public function alterRoutesLate(RouteBuildEvent $event) {
+    $collection = $event->getRouteCollection();
+    foreach ($collection->all() as $name => $route) {
+      switch ($name) {
+        case 'entity.node.field_ui_fields':
+          $route->setDefault('_title_callback', '\Drupal\reservoir_ui\Routing\ReservoirUiRouteSubscriber::manageFieldsTitle');
+          break;
+        case 'node.type_add':
+          $route->setPath('/admin/modeling/add');
+          break;
+        case 'entity.entity_form_display.node.default':
+          $route->setRequirement('_access', 'FALSE');
+          break;
+        case 'entity.entity_view_display.node.default':
+          $route->setRequirement('_access', 'FALSE');
+          break;
+      }
+    }
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function getSubscribedEvents() {
+    $events = [];
+    $events[RoutingEvents::ALTER] = [
+      ['alterRoutes'],
+      ['alterRoutesLate', -10000],
+    ];
+    return $events;
+  }
+
+  // @see \Drupal\node\Controller\NodeController::addPageTitle
+  // @todo fix in core
+  public static function manageFieldsTitle(NodeTypeInterface $node_type) {
+    return t('Manage %type fields', ['%type' => $node_type->label()]);
   }
 
 }
