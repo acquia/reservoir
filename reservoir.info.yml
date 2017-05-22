@@ -18,7 +18,6 @@ dependencies:
   - openapi
   - openapi_docs
   # Data: modeling.
-  - comment
   - datetime
   - file
   - image

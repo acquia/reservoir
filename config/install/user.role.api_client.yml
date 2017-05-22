@@ -11,8 +11,5 @@ permissions:
   # Docs.
   - 'access openapi api docs'
   # Entity permissions.
-  - 'access comments'
   - 'create article content'
   - 'edit own article content'
-  - 'edit own comments'
-  - 'post comments'
