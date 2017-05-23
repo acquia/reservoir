@@ -1,7 +1,7 @@
 reservoir_ui.api:
   path: '/admin/api'
   defaults:
-    _controller: '\Drupal\openapi_docs\Controller\SwaggerUIController::openApiResources'
+    _controller: '\Drupal\openapi_redoc\Controller\DocController::generateDocs'
   methods: [GET]
   requirements:
     _permission: 'access openapi api docs'

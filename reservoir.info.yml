@@ -16,7 +16,7 @@ dependencies:
   - basic_auth
   - schemata
   - openapi
-  - openapi_docs
+  - openapi_redoc
   # Data: modeling.
   - datetime
   - file
