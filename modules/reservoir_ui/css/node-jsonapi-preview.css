@@ -1,0 +1,7 @@
+table.node-html-and-jsonapi {
+  margin-top: 3em;
+}
+table.node-html-and-jsonapi tbody td {
+    vertical-align: top;
+    width: 50%;
+}

@@ -2,6 +2,11 @@
 
 use Drupal\Core\Access\AccessResultForbidden;
 use Drupal\Core\Url;
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+use Drupal\Core\Render\Markup;
+use Drupal\node\NodeInterface;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\HttpKernelInterface;
 
 /**
  * Implements hook_page_attachments().
@@ -171,4 +176,80 @@ function reservoir_ui_menu_links_discovered_alter(&$links) {
 
   $links['entity.user.collection']['title'] = t('Access control');
   $links['user.admin_index']['title'] = t('Users');
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_view_alter().
+ *
+ * @todo Instead of this hack, override the route definition for entity.node.canonical, and specify a custom controller to use instead of NodeViewController. Alters are brittle. Then we perhaps could also list *every* field, without relying on an EntityViewDisplay?
+ */
+function reservoir_ui_node_view_alter(array &$build, NodeInterface $entity, EntityViewDisplayInterface $display) {
+  // Retrieve JSON API representation of this node.
+  $jsonapi_url = _reservoir_ui_get_node_jsonapi_url($entity);
+  $response_body = _reservoir_ui_do_subrequest($jsonapi_url)->getContent();
+
+  // Generate markup.
+  $json = json_encode(json_decode($response_body), JSON_PRETTY_PRINT);
+  $markup = <<<HTML
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+<p><a href="$jsonapi_url"><code>$jsonapi_url</code></a></p>
+<pre class="prettyprint lang-js">$json</pre>
+HTML;
+
+  // Add to render array.
+  $build['jsonapi_prefix'] = [
+    '#weight' => -100000,
+    '#prefix' => '<table class="node-html-and-jsonapi"><thead><tr><th>HTML representation</th><th>JSON API representation</th></tr></thead><tbody></tbody><tr><td>',
+  ];
+  $build['jsonapi'] = [
+    '#weight' => 10000,
+    '#prefix' => '</td><td><div class="node-jsonapi-preview">',
+    '#suffix' => '</div></td></tr></tbody></table>',
+    '#markup' => Markup::create($markup),
+    '#attached' => [
+      'library' => [
+        'reservoir_ui/node-jsonapi-preview',
+      ],
+    ],
+  ];
+}
+
+/**
+ * Gets the individual JSON API URL for the given node.
+
+ * @param \Drupal\node\NodeInterface $node
+ *   A node.
+ *
+ * @return string
+ *   The generated URL.
+ */
+function _reservoir_ui_get_node_jsonapi_url(NodeInterface $node) {
+  return Url::fromRoute(sprintf('jsonapi.node--%s.individual', $node->bundle()), [
+    'node' => $node->uuid(),
+  ])->toString(TRUE)->getGeneratedUrl();
+}
+
+/**
+ * Performs a subrequest.
+ *
+ * @param string $url
+ *   The string to send a subrequest to.
+ *
+ * @return \Symfony\Component\HttpFoundation\Response
+ *   The response.
+ */
+function _reservoir_ui_do_subrequest($url) {
+  // Create a subrequest.
+  $request = \Drupal::request();
+  $subrequest = Request::create($url, 'GET', $request->query->all(), $request->cookies->all(), [], $request->server->all());
+  if ($session = $request->getSession()) {
+    $subrequest->setSession($session);
+  }
+
+  // Execute the subrequest.
+  $response = \Drupal::service('http_kernel')->handle($subrequest, HttpKernelInterface::SUB_REQUEST);
+  // @todo Remove this when https://www.drupal.org/node/2613044 lands.
+  \Drupal::requestStack()->pop();
+
+  return $response;
 }

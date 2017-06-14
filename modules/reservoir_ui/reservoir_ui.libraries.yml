@@ -6,3 +6,9 @@ welcome:
     - core/domready
     - core/jquery
     - tour/tour
+
+node-jsonapi-preview:
+  version: VERSION
+  css:
+    theme:
+      css/node-jsonapi-preview.css: {}
