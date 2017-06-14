@@ -3,7 +3,17 @@ reservoir_ui.api:
   title: API
   base_route: reservoir_ui.api
 
+reservoir_ui.api.config:
+  route_name: reservoir_ui.api.config
+  title: Configuration API
+  base_route: reservoir_ui.api
+
 reservoir_ui.api.advanced:
   route_name: reservoir_ui.api.advanced
   title: Advanced
   base_route: reservoir_ui.api
+
+# @see field_ui.fields
+reservoir_ui.field_ui.api:
+  class: \Drupal\Core\Menu\LocalTaskDefault
+  deriver: \Drupal\reservoir_ui\Plugin\Derivative\BundleApiLocalTask

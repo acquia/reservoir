@@ -1,7 +1,17 @@
 reservoir_ui.api:
   path: '/admin/api'
   defaults:
-    _controller: '\Drupal\openapi_redoc\Controller\DocController::generateDocs'
+    _controller: '\Drupal\reservoir_ui\Controller\OpenApiDocs::generateDocs'
+    entity_mode: 'content_entities'
+  methods: [GET]
+  requirements:
+    _permission: 'access openapi api docs'
+
+reservoir_ui.api.config:
+  path: '/admin/api/config'
+  defaults:
+    _controller: '\Drupal\reservoir_ui\Controller\OpenApiDocs::generateDocs'
+    entity_mode: 'config_entities'
   methods: [GET]
   requirements:
     _permission: 'access openapi api docs'
@@ -13,3 +23,13 @@ reservoir_ui.api.advanced:
     _title: 'Advanced'
   requirements:
     _access: 'TRUE'
+
+# @see entity.node_type.edit_form
+reservoir_ui.entity.node_type.api:
+  path: '/admin/models/{node_type}/api'
+  defaults:
+    _controller: '\Drupal\reservoir_ui\Controller\OpenApiDocs::generateBundleDocs'
+    entity_type_id: 'node'
+  methods: [GET]
+  requirements:
+    _permission: 'access openapi api docs'
