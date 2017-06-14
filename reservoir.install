@@ -5,7 +5,9 @@
  * Install, update and uninstall functions for the Reservoir install profile.
  */
 
+use Drupal\file\Entity\File;
 use Drupal\node\Entity\Node;
+use Drupal\taxonomy\Entity\Term;
 
 /**
  * Implements hook_install().
@@ -22,12 +24,33 @@ function reservoir_install() {
   $user_settings = \Drupal::configFactory()->getEditable('user.settings');
   $user_settings->set('register', USER_REGISTER_VISITORS_ADMINISTRATIVE_APPROVAL)->save(TRUE);
 
+  // Create default content.
+  file_unmanaged_copy(\Drupal::root() . '/core/misc/druplicon.png', 'public://example.jpg');
+  $file = File::create(['uri' => 'public://example.jpg']);
+  $file->save();
+  $term = Term::create([
+    'name' => 'Camelids',
+    'vid' => 'tags',
+  ]);
+  $term->save();
   Node::create([
     'type' => 'article',
-    'title' => 'Hello world!',
     'body' => [
       'value' => 'The name "llama" was adopted by European settlers from native Peruvians.',
       'format' => 'basic_html',
     ],
-  ])->save();
+    'field_image' => [
+      [
+        'target_id' => $file->id(),
+      ],
+    ],
+    'field_tags' => [
+      [
+        'target_id' => $term->id(),
+      ],
+    ],
+  ])
+    ->setTitle('Hello world!')
+    ->setOwnerId(1)
+    ->save();
 }
