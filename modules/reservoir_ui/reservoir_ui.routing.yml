@@ -16,6 +16,14 @@ reservoir_ui.api.config:
   requirements:
     _permission: 'access openapi api docs'
 
+reservoir_ui.api.authentication:
+  path: '/admin/api/authentication'
+  defaults:
+    _controller: '\Drupal\reservoir_ui\Controller\ApiAuthInfo::info'
+  methods: [GET]
+  requirements:
+    _permission: 'access openapi api docs'
+
 reservoir_ui.api.advanced:
   path: '/admin/api/advanced'
   defaults:

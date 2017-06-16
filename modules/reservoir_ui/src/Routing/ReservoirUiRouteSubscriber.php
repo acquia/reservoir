@@ -51,6 +51,14 @@ class ReservoirUiRouteSubscriber implements EventSubscriberInterface  {
         case 'entity.user_role.collection':
           $route->setPath('/admin/access/roles');
           break;
+        case 'entity.oauth2_client.collection':
+          $route->setDefault('_title', 'OAuth2 clients');
+          $route->setPath('/admin/access/oauth2/clients');
+          break;
+        case 'entity.oauth2_token.collection':
+          $route->setDefault('_title', 'OAuth2 access tokens');
+          $route->setPath('/admin/access/oauth2/tokens');
+          break;
       }
     }
   }

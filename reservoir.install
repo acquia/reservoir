@@ -7,7 +7,9 @@
 
 use Drupal\file\Entity\File;
 use Drupal\node\Entity\Node;
+use Drupal\simple_oauth\Entity\Oauth2Client;
 use Drupal\taxonomy\Entity\Term;
+use Drupal\user\Entity\User;
 
 /**
  * Implements hook_install().
@@ -23,6 +25,39 @@ function reservoir_install() {
   // Allow visitor account creation with administrative approval.
   $user_settings = \Drupal::configFactory()->getEditable('user.settings');
   $user_settings->set('register', USER_REGISTER_VISITORS_ADMINISTRATIVE_APPROVAL)->save(TRUE);
+
+  // Generate initial, temporary keys, for a better onboarding experience.
+  if (function_exists('openssl_pkey_new')) {
+    $oauth_settings = \Drupal::configFactory()->getEditable('simple_oauth.settings');
+    list($private_key, $public_key) = _reservoir_generate_keypair();
+    foreach (['private' => $private_key, 'public' => $public_key] as $kind => $key) {
+      $path = sys_get_temp_dir() . '/' . sha1($key) . '.key';
+      if (!file_exists($path) && !touch($path)) {
+        throw new \RuntimeException('"%s" key file could not be created', $path);
+      }
+      file_put_contents($path, $key);
+      $oauth_settings->set("{$kind}_key", $path);
+    }
+    $oauth_settings->save(TRUE);
+    drupal_set_message('Generated an initial public/private key pair to use for OAuth2 authentication. Change it before going into production!', 'warning');
+  }
+  else {
+    drupal_set_message('Could not automatically generate an initial public/private key pair to use for OAuth2 authentication. Until configuring this, OAuth2 authentication will not work.', 'warning');
+  }
+
+  // Create a demo user & demo client.
+  User::create([])
+    ->setUsername('demo-user')
+    ->setPassword('demo-user')
+    ->activate()
+    ->save();
+  Oauth2Client::create([
+    'owner_id' => 1,
+    'label' => 'Demo app',
+    'secret' => 'foobar',
+    'confidential' => TRUE,
+    'roles' => [['target_id' => 'api_client']],
+  ])->save();
 
   // Create default content.
   file_unmanaged_copy(\Drupal::root() . '/core/misc/druplicon.png', 'public://example.jpg');
@@ -53,4 +88,28 @@ function reservoir_install() {
     ->setTitle('Hello world!')
     ->setOwnerId(1)
     ->save();
+}
+
+// Source: https://stackoverflow.com/a/34962604.
+function _reservoir_generate_keypair() {
+  // generate 2048-bit RSA key
+  $pk_Generate = openssl_pkey_new(array(
+    'private_key_bits' => 2048,
+    'private_key_type' => OPENSSL_KEYTYPE_RSA
+  ));
+
+  // getting private-key
+  openssl_pkey_export($pk_Generate, $pk_Generate_Private); // we pass 2nd argument as reference
+
+  // getting public-key
+  $pk_Generate_Details = openssl_pkey_get_details($pk_Generate);
+  $pk_Generate_Public = $pk_Generate_Details['key'];
+
+  // free resources
+  openssl_pkey_free($pk_Generate);
+
+  return [
+    $pk_Generate_Private,
+    $pk_Generate_Public,
+  ];
 }

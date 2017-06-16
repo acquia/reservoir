@@ -9,6 +9,28 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 
 /**
+ * Implements hook_help().
+ */
+function reservoir_ui_help($route_name, \Drupal\Core\Routing\RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'entity.user.collection':
+      return '<p>' . t('A user represents a human. Users can log in to Reservoir if they have the <q>Content administrator</q> or <q>Client developer</q> <a href=":role">role</a>. Otherwise, they can only perform actions via a <a href=":client">Client</a>', [':role' => Url::fromRoute('entity.user_role.collection'), ':client' => Url::fromRoute('entity.oauth2_client.collection')]) . '</p>';
+
+    // @todo override the default help from user.module, but hook_help() doesn't allow overriding this…
+    //case 'user.admin_permissions':
+
+    // @todo override the default help from user.module, but hook_help() doesn't allow overriding this…
+    //case 'entity.user_role.collection':
+
+    case 'entity.oauth2_client.collection':
+      return '<p>' . t('A client represents an app, native or web, that users can log in to and interact with the content in this Reservoir, via OAuth2 authentication.') . '</p>';
+
+    case 'entity.oauth2_token.collection':
+      return '<p>' . t('OAuth2 uses tokens to allow users to interact with content in this Reservoir via clients. Clients initially get an <code>access_token</code>, which is usable for a limited time. They use a <code>refresh_token</code> to refresh their <code>access_token</code>. This provides stronger security.') . '</p>';
+  }
+}
+
+/**
  * Implements hook_page_attachments().
  */
 function reservoir_ui_page_attachments(array &$page) {
@@ -176,6 +198,21 @@ function reservoir_ui_menu_links_discovered_alter(&$links) {
 
   $links['entity.user.collection']['title'] = t('Access control');
   $links['user.admin_index']['title'] = t('Users');
+}
+
+/**
+ * Implements hook_local_tasks_alter().
+ */
+function reservoir_ui_local_tasks_alter(&$local_tasks) {
+  $local_tasks['entity.oauth2_client.collection']['title'] = '📱 Clients';
+  $local_tasks['entity.oauth2_client.collection']['base_route'] = 'entity.user.collection';
+  $local_tasks['entity.oauth2_client.collection']['weight'] = 90;
+
+  $local_tasks['entity.oauth2_token.collection']['title'] = '🔑 Tokens';
+  $local_tasks['entity.oauth2_token.collection']['base_route'] = 'entity.user.collection';
+  $local_tasks['entity.oauth2_token.collection']['weight'] = 100;
+
+  $local_tasks['entity.user.collection']['title'] = '🙋 Users';
 }
 
 /**

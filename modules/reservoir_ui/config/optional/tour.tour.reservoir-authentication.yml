@@ -1,0 +1,84 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - reservoir_ui
+id: reservoir-authentication
+label: 'Authentication'
+module: reservoir_ui
+routes:
+  -
+    route_name: entity.user.collection
+  -
+    route_name: user.admin_permissions
+  -
+    route_name: entity.user_role.collection
+  -
+    route_name: entity.user_role.collection
+  -
+    route_name: entity.oauth2_client.collection
+  -
+    route_name: entity.oauth2_token.collection
+tips:
+  reservoir-authentication-start:
+    id: reservoir-authentication-start
+    plugin: text
+    label: 'Access control'
+    body: >
+     Reservoir has:
+     <dl>
+       <dd>Roles, which have permissions. <small>("scopes" in OAuth2 parlance)</small></dd>
+       <dd>Users, which have roles.</dd>
+       <dd>Clients, which have roles.</dd>
+     </dl>
+     Reservoir uses OAuth2 password grants for API authentication, which need both client + user.
+     <br>
+     <br>
+     All content interactions happen as the user, <em>via</em> the client.
+    weight: 1
+  reservoir-authentication-users:
+    id: reservoir-authentication-users
+    plugin: text
+    label: 'Create & manage users'
+    body: 'Assign users the <q>Content administrator</q> or <q>Client developer</q> roles if you want them to log in to Reservoir.</em>'
+    weight: 2
+    attributes:
+      data-class: tabs__tab a[href*="/admin/access/users"]
+  reservoir-authentication-permissions:
+    id: reservoir-authentication-permissions
+    plugin: text
+    label: 'Permissions'
+    body: 'Permissions determine which actions are allowed. They are assigned to roles.'
+    weight: 3
+    attributes:
+      data-class: tabs__tab a[href*="/admin/access/permissions"]
+  reservoir-authentication-roles:
+    id: reservoir-authentication-roles
+    plugin: text
+    label: 'Roles'
+    body: 'Roles can be assigned to both users and clients.<br><br>Again: only users with the <q>Content administrator</q> or <q>Client developer</q> role can log in to Reservoir.'
+    weight: 4
+    attributes:
+      data-class: tabs__tab a[href*="/admin/access/roles"]
+  reservoir-authentication-clients:
+    id: reservoir-authentication-clients
+    plugin: text
+    label: 'Clients'
+    body: 'Users interact with the content in this Reservoir via clients. Clients have roles to limit the actions that can be performed. When a user logs in to a client, they "inherit" the roles of the client: anything a client can do, every user can do.'
+    weight: 5
+    attributes:
+      data-class: tabs__tab a[href*="/admin/access/oauth2/clients"]
+  reservoir-authentication-tokens:
+    id: reservoir-authentication-tokens
+    plugin: text
+    label: 'OAuth2 tokens'
+    body: 'Observe or analyze all active tokens. You can see which clients are used, and which users are using them.'
+    weight: 6
+    attributes:
+      data-class: tabs__tab a[href*="/admin/access/oauth2/tokens"]
+  reservoir-authentication-recap:
+    id: reservoir-authentication-recap
+    plugin: text
+    label: 'So…'
+    body: '… you will probably start with 1 client, with roles assigned to that client to reflect its capabilities, and many users to use that client.'
+    weight: 10

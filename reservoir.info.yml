@@ -13,7 +13,7 @@ dependencies:
   # Drupal: web services.
   - serialization
   - jsonapi
-  - basic_auth
+  - simple_oauth
   - schemata
   - openapi
   - openapi_redoc

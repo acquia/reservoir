@@ -1,4 +1,3 @@
-uuid: 4c678a01-a007-4d88-8e12-924471ce0216
 langcode: en
 status: true
 dependencies:
@@ -68,8 +67,8 @@ tips:
   reservoir-ui-welcome-access-control:
     id: reservoir-ui-welcome-access-control
     plugin: text
-    label: 'Users, roles & permissions'
-    body: Add more users, or even allow them to sign up themselves. Use roles to control what every user is allowed to see and do.<br><br><em>By default, Reservoir provides <q>Content administrator</q> and <q>API client</q> roles.</em>
+    label: 'Users, roles, permissions & OAuth2 clients'
+    body: Add more users, or even allow them to sign up themselves. Use roles to control what every user is allowed to see and do. Create OAuth2 clients that users can log in with.<br><br><em>By default, Reservoir provides <q>Content administrator</q> and <q>API client</q> roles.</em>
     weight: 8
     attributes:
       data-class: path-frontpage .toolbar-tab a[href*="/access/users"]

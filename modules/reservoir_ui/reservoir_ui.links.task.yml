@@ -8,10 +8,17 @@ reservoir_ui.api.config:
   title: Configuration API
   base_route: reservoir_ui.api
 
+reservoir_ui.api.authentication:
+  route_name: reservoir_ui.api.authentication
+  title: Authentication
+  base_route: reservoir_ui.api
+  weight: 90
+
 reservoir_ui.api.advanced:
   route_name: reservoir_ui.api.advanced
   title: Advanced
   base_route: reservoir_ui.api
+  weight: 100
 
 # @see field_ui.fields
 reservoir_ui.field_ui.api:
