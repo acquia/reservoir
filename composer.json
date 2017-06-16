@@ -11,25 +11,22 @@
         }
     ],
     "require": {
-        "cweagans/composer-patches": "~1.0",
+        "cweagans/composer-patches": "^1.5.0",
+        "composer/installers": "^1.0",
+        "drupal-composer/drupal-scaffold": "^2.0.0",
         "drupal/core": "~8.3.3",
         "drupal/schemata": "1.x-dev#8325d172e1d6880aa24073f8f751ef089282cf9a",
         "drupal/openapi": "1.x-dev#7ee847c79f0be4c977bc021ce9519dd50a45cb3f",
         "drupal/jsonapi": "1.0.0",
         "drupal/simple_oauth": "2.0-rc2"
     },
+    "scripts": {
+        "post-install-cmd": [
+            "@composer drupal-scaffold"
+        ],
+        "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold"
+    },
     "extra": {
-        "installer-paths": {
-            "docroot/core": [
-                "type:drupal-core"
-            ],
-            "docroot/libraries/{$name}": [
-                "type:drupal-library"
-            ],
-            "docroot/profiles/contrib/reservoir/modules/contrib/{$name}": [
-                "type:drupal-module"
-            ]
-        },
         "patches": {
             "drupal/core": {
                 "Fix toolbar active link handling": "https://www.drupal.org/files/issues/2885755-2-8.3.x.patch",
