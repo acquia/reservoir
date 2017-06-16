@@ -4,6 +4,7 @@ dependencies:
   config:
     - field.field.node.article.body
     - field.field.node.article.field_image
+    - field.field.node.article.field_related_articles
     - field.field.node.article.field_tags
     - image.style.large
     - node.type.article
@@ -30,6 +31,13 @@ content:
       image_link: ''
     third_party_settings: {  }
     label: above
+  field_related_articles:
+    weight: 101
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
   field_tags:
     type: entity_reference_label
     weight: 10
@@ -39,3 +47,4 @@ content:
     third_party_settings: {  }
   links:
     weight: 100
+hidden: {  }
