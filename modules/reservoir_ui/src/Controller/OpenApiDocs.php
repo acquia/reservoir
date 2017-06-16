@@ -55,7 +55,11 @@ class OpenApiDocs {
     ];
     $build = [
       '#theme' => 'redoc',
-      '#url' => Url::fromRoute('openapi.jsonapi', [], $route_options)
+      '#attributes' => [
+        'no-auto-auth' => TRUE,
+        'scroll-y-offset' => 150,
+      ],
+      '#openapi_url' => Url::fromRoute('openapi.jsonapi', [], $route_options)
         ->setAbsolute()
         ->toString(),
     ];

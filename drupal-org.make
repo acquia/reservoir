@@ -9,4 +9,4 @@ projects[schemata][patch][] = https://www.drupal.org/files/issues/2870904-22.pat
 projects[openapi][type] = module
 projects[openapi][download][url] = https://git.drupal.org/project/openapi.git
 projects[openapi][branch] = 8.x-1.x
-projects[openapi][download][revision] = cecadbc3cbf9e87baece2d7eaff3064ea38fb278
+projects[openapi][download][revision] = 7ee847c79f0be4c977bc021ce9519dd50a45cb3f
