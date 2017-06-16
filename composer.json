@@ -1,0 +1,41 @@
+{
+    "name": "acquia/reservoir",
+    "description": "A backend for your frontend. Powered by Drupal.",
+    "type": "drupal-profile",
+    "license": "GPL-2.0+",
+    "minimum-stability": "dev",
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        }
+    ],
+    "require": {
+        "cweagans/composer-patches": "~1.0",
+        "drupal/core": "~8.3.3",
+        "drupal/schemata": "1.x-dev#8325d172e1d6880aa24073f8f751ef089282cf9a",
+        "drupal/openapi": "1.x-dev#7ee847c79f0be4c977bc021ce9519dd50a45cb3f",
+        "drupal/jsonapi": "1.0.0",
+    },
+    "extra": {
+        "installer-paths": {
+            "docroot/core": [
+                "type:drupal-core"
+            ],
+            "docroot/libraries/{$name}": [
+                "type:drupal-library"
+            ],
+            "docroot/profiles/contrib/reservoir/modules/contrib/{$name}": [
+                "type:drupal-module"
+            ]
+        },
+        "patches": {
+            "drupal/core": {
+                "Fix toolbar active link handling": "https://www.drupal.org/files/issues/2885755-2-8.3.x.patch"
+            },
+            "drupal/schemata": {
+                "Add entity type only schema routes for entity types with bundles": "https://www.drupal.org/files/issues/2870904-22.patch"
+            }
+        }
+    }
+}
