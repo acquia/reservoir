@@ -12,3 +12,10 @@ node-jsonapi-preview:
   css:
     theme:
       css/node-jsonapi-preview.css: {}
+
+# https://www.drupal.org/node/2886816
+fix-2886816:
+  version: VERSION
+  css:
+    theme:
+      css/fix-2886816.css: {}
