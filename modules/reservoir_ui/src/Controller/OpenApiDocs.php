@@ -35,7 +35,18 @@ class OpenApiDocs {
    *   The generated documentation.
    */
   public function generateDocs($entity_mode) {
-    return $this->generateDocsFromQuery(['options[entity_mode]' => $entity_mode]);
+    $options = [
+      'entity_mode' => $entity_mode,
+    ];
+    if ($entity_mode === 'content_entities') {
+      // Exclude content entities that are not related to the exposed data
+      // models.
+      $options['exclude'] = [
+        'oauth2_client',
+        'oauth2_token',
+      ];
+    }
+    return $this->generateDocsFromQuery(['options' => $options]);
   }
 
   /**
