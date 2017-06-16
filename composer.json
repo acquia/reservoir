@@ -33,7 +33,8 @@
         "patches": {
             "drupal/core": {
                 "Fix toolbar active link handling": "https://www.drupal.org/files/issues/2885755-2-8.3.x.patch",
-                "Fix 'administer nodes' permission": "https://www.drupal.org/files/issues/node-create-access-also-administer-nodes-2744381-22.patch"
+                "Fix 'administer nodes' permission": "https://www.drupal.org/files/issues/node-create-access-also-administer-nodes-2744381-22.patch",
+                "field.storage.node.body belongs in 'standard' install profile, not in the 'node' module": "https://www.drupal.org/files/issues/2886861-2.patch"
             },
             "drupal/schemata": {
                 "Add entity type only schema routes for entity types with bundles": "https://www.drupal.org/files/issues/2870904-22.patch"
