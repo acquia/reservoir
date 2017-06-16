@@ -3,13 +3,12 @@ status: true
 dependencies:
   module:
     - reservoir_ui
-id: api_client
-label: 'API client'
-weight: 1
+id: client_developer
+label: 'Client developer'
+weight: 3
 is_admin: false
 permissions:
   # Docs.
   - 'access openapi api docs'
-  # Entity permissions.
-  - 'create article content'
-  - 'edit own article content'
+  # OAuth2 clients & tokens.
+  - 'administer simple_oauth entities'

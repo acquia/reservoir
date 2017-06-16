@@ -45,10 +45,22 @@ function reservoir_install() {
     drupal_set_message('Could not automatically generate an initial public/private key pair to use for OAuth2 authentication. Until configuring this, OAuth2 authentication will not work.', 'warning');
   }
 
-  // Create a demo user & demo client.
+  // Create demo users & demo client.
   User::create([])
     ->setUsername('demo-user')
     ->setPassword('demo-user')
+    ->activate()
+    ->save();
+  User::create([])
+    ->setUsername('demo-writer')
+    ->setPassword('demo-writer')
+    ->set('roles', ['content_administrator'])
+    ->activate()
+    ->save();
+  User::create([])
+    ->setUsername('demo-developer')
+    ->setPassword('demo-developer')
+    ->set('roles', ['client_developer'])
     ->activate()
     ->save();
   Oauth2Client::create([
@@ -56,7 +68,7 @@ function reservoir_install() {
     'label' => 'Demo app',
     'secret' => 'foobar',
     'confidential' => TRUE,
-    'roles' => [['target_id' => 'api_client']],
+    'roles' => [],
   ])->save();
 
   // Create default content.

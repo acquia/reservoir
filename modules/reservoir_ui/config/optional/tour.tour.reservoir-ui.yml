@@ -44,7 +44,7 @@ tips:
     id: reservoir-ui-welcome-api
     plugin: text
     label: 'API'
-    body: Explore the API that Reservoir is currently providing, to make your content & content models available for clients!<br><br>Including documentation and live demos.<br><br><em>For users with the <q>API client</q> role.</em>
+    body: Explore the API that Reservoir is currently providing, to make your content & content models available for clients!<br><br>Including documentation and live demos.<br><br><em>For users with the <q>Client developer</q> role.</em>
     weight: 5
     attributes:
       data-class: path-frontpage .toolbar-tab a[href*="/admin/api"]
@@ -68,7 +68,7 @@ tips:
     id: reservoir-ui-welcome-access-control
     plugin: text
     label: 'Users, roles, permissions & OAuth2 clients'
-    body: Add more users, or even allow them to sign up themselves. Use roles to control what every user is allowed to see and do. Create OAuth2 clients that users can log in with.<br><br><em>By default, Reservoir provides <q>Content administrator</q> and <q>API client</q> roles.</em>
+    body: Add more users, or even allow them to sign up themselves. Use roles to control what every user is allowed to see and do. Create OAuth2 clients that users can log in with.<br><br><em>By default, Reservoir provides <q>Content administrator</q> and <q>Client developer</q> roles.</em>
     weight: 8
     attributes:
       data-class: path-frontpage .toolbar-tab a[href*="/access/users"]

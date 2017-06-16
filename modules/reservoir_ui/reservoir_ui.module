@@ -1,5 +1,6 @@
 <?php
 
+use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Access\AccessResultForbidden;
 use Drupal\Core\Url;
 use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
@@ -50,122 +51,153 @@ function reservoir_ui_form_node_type_edit_form_alter(&$form, \Drupal\Core\Form\F
 }
 
 function reservoir_ui_toolbar_alter(&$items) {
+  $current_user = \Drupal::currentUser();
+
   unset($items['home']);
 
-  $items['reservoir_content'] = array(
-    '#type' => 'toolbar_item',
-    'tab' => array(
-      '#type' => 'link',
-      '#title' => t('Content'),
-      '#url' => Url::fromRoute('<front>'),
-      '#options' => [
-        'set_active_class' => TRUE,
+  $empty_item_cacheability = [
+    '#cache' => [
+      'contexts' => [
+        'user.permissions',
       ],
-      '#attributes' => array(
-        'class' => array('toolbar-icon', 'toolbar-icon-system-admin-content'),
-      ),
-    ),
-    '#weight' => -35,
-  );
-  $items['reservoir_api'] = array(
-    '#type' => 'toolbar_item',
-    'tab' => array(
-      '#type' => 'link',
-      '#title' => t('API'),
-      '#url' => Url::fromRoute('reservoir_ui.api'),
-      '#options' => [
-        'set_active_class' => TRUE,
-      ],
-      '#attributes' => array(
-        'class' => array('toolbar-icon', 'toolbar-icon-system-modules-list'),
-      ),
-    ),
-    '#weight' => -30,
-  );
-  $items['reservoir_content_models'] = array(
-    '#type' => 'toolbar_item',
-    'tab' => array(
-      '#type' => 'link',
-      '#title' => t('Content models'),
-      '#url' => Url::fromRoute('entity.node_type.collection'),
-      '#options' => [
-        'set_active_class' => TRUE,
-      ],
-      '#attributes' => array(
-        'class' => array('toolbar-icon', 'toolbar-icon-system-admin-structure'),
-      ),
-    ),
-    '#weight' => -25,
-  );
-  $items['reservoir_data_access'] = array(
-    '#type' => 'toolbar_item',
-    'tab' => array(
-      '#type' => 'link',
-      '#options' => [
-        'set_active_class' => TRUE,
-      ],
-      '#title' => t('Access control'),
-      '#url' => Url::fromRoute('entity.user.collection'),
-      '#attributes' => array(
-        'class' => array('toolbar-icon', 'toolbar-icon-entity-user-collection'),
-      ),
-    ),
-    '#weight' => -20,
-  );
+    ],
+  ];
 
-  $items['reservoir_backend'] = array(
-    '#type' => 'toolbar_item',
-    'tab' => array(
-      '#type' => 'link',
-      '#title' => t('Manage back end'),
-      '#url' => Url::fromRoute('user.page'),
-      '#attributes' => array(
-        'class' => array('toolbar-icon', 'toolbar-icon-menu'),
-      ),
-    ),
-    'tray' => array(
-      '#heading' => t('Back end management'),
-      'user_links' => array(
-        '#theme' => 'links__toolbar_reservoir_ui',
-        '#links' => [
-          'configuration' => [
-            'title' => t('Configuration'),
-            'url' => Url::fromRoute('system.admin_config'),
-            'attributes' => [
-              'class' => [
-                'toolbar-icon',
-                'toolbar-icon-system-admin-config',
-              ],
-            ],
-          ],
-          'reports' => [
-            'title' => t('Reports'),
-            'url' => Url::fromRoute('system.admin_reports'),
-            'attributes' => [
-              'class' => [
-                'toolbar-icon',
-                'toolbar-icon-system-admin-reports',
-              ],
-            ],
-          ],
-          'help' => [
-            'title' => t('Help'),
-            'url' => Url::fromRoute('help.main'),
-            'attributes' => [
-              'class' => [
-                'toolbar-icon',
-                'toolbar-icon-help-main',
-              ],
-            ],
-          ],
+  if ($current_user->hasPermission('access content overview')) {
+    $items['reservoir_content'] = array(
+      '#type' => 'toolbar_item',
+      'tab' => array(
+        '#type' => 'link',
+        '#title' => t('Content'),
+        '#url' => Url::fromRoute('<front>'),
+        '#options' => [
+          'set_active_class' => TRUE,
         ],
         '#attributes' => array(
-          'class' => array('toolbar-reservoir-ui'),
+          'class' => array('toolbar-icon', 'toolbar-icon-system-admin-content'),
         ),
       ),
-    ),
-    '#weight' => -15,
-  );
+      '#weight' => -35,
+    );
+  }
+  else {
+    $items['reservoir_content'] = $empty_item_cacheability;
+  }
+
+  if ($current_user->hasPermission('access openapi api docs')) {
+    $items['reservoir_api'] = array(
+      '#type' => 'toolbar_item',
+      'tab' => array(
+        '#type' => 'link',
+        '#title' => t('API'),
+        '#url' => Url::fromRoute('reservoir_ui.api'),
+        '#options' => [
+          'set_active_class' => TRUE,
+        ],
+        '#attributes' => array(
+          'class' => array('toolbar-icon', 'toolbar-icon-system-modules-list'),
+        ),
+      ),
+      '#weight' => -30,
+    );
+  }
+  else {
+    $items['reservoir_api'] = $empty_item_cacheability;
+  }
+
+  if ($current_user->hasPermission('administer content types')) {
+    $items['reservoir_content_models'] = array(
+      '#type' => 'toolbar_item',
+      'tab' => array(
+        '#type' => 'link',
+        '#title' => t('Content models'),
+        '#url' => Url::fromRoute('entity.node_type.collection'),
+        '#options' => [
+          'set_active_class' => TRUE,
+        ],
+        '#attributes' => array(
+          'class' => array('toolbar-icon', 'toolbar-icon-system-admin-structure'),
+        ),
+      ),
+      '#weight' => -25,
+    );
+  }
+  else {
+    $items['reservoir_content_models'] = $empty_item_cacheability;
+  }
+
+  if ($current_user->hasPermission('administer users') || $current_user->hasPermission('administer simple_oauth entities')) {
+    $items['reservoir_data_access'] = array(
+      '#type' => 'toolbar_item',
+      'tab' => array(
+        '#type' => 'link',
+        '#options' => [
+          'set_active_class' => TRUE,
+        ],
+        '#title' => t('Access control'),
+        '#url' => $current_user->hasPermission('administer users')
+          ? Url::fromRoute('entity.user.collection')
+          : Url::fromRoute('entity.oauth2_token.collection'),
+        '#attributes' => array(
+          'class' => array('toolbar-icon', 'toolbar-icon-entity-user-collection'),
+        ),
+      ),
+      '#weight' => -20,
+    );
+  }
+  else {
+    $items['reservoir_data_access'] = $empty_item_cacheability;
+  }
+
+  if ($current_user->hasPermission('access administration pages')) {
+    $items['reservoir_backend'] = array(
+      '#type' => 'toolbar_item',
+      'tab' => array(
+        '#type' => 'link',
+        '#title' => t('Manage back end'),
+        '#url' => Url::fromRoute('user.page'),
+        '#attributes' => array(
+          'class' => array('toolbar-icon', 'toolbar-icon-menu'),
+        ),
+      ),
+      'tray' => array(
+        '#heading' => t('Back end management'),
+        'user_links' => array(
+          '#theme' => 'links__toolbar_reservoir_ui',
+          '#links' => [
+            'configuration' => [
+              'title' => t('Configuration'),
+              'url' => Url::fromRoute('system.admin_config'),
+              'attributes' => [
+                'class' => ['toolbar-icon', 'toolbar-icon-system-admin-config'],
+              ],
+            ],
+            'reports' => [
+              'title' => t('Reports'),
+              'url' => Url::fromRoute('system.admin_reports'),
+              'attributes' => [
+                'class' => ['toolbar-icon', 'toolbar-icon-system-admin-reports'],
+              ],
+            ],
+            'help' => [
+              'title' => t('Help'),
+              'url' => Url::fromRoute('help.main'),
+              'attributes' => [
+                'class' => ['toolbar-icon', 'toolbar-icon-help-main'],
+              ],
+            ],
+          ],
+          '#attributes' => array(
+            'class' => array('toolbar-reservoir-ui'),
+          ),
+        ),
+      ),
+      '#weight' => -15,
+    );
+  }
+  else {
+    $items['reservoir_backend'] = $empty_item_cacheability;
+  }
 
   unset($items['administration']);
 
@@ -289,4 +321,12 @@ function _reservoir_ui_do_subrequest($url) {
   \Drupal::requestStack()->pop();
 
   return $response;
+}
+
+/**
+ * Implements hook_entity_type_alter().
+ */
+function reservoir_ui_entity_type_alter(array &$entity_types) {
+  /** @var $entity_types \Drupal\Core\Entity\EntityTypeInterface[] */
+  $entity_types['oauth2_client']->setLinkTemplate('canonical', '/client/{oauth2_client}');
 }

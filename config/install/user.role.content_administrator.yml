@@ -5,7 +5,7 @@ dependencies:
     - reservoir_ui
 id: content_administrator
 label: 'Content administrator'
-weight: 1
+weight: 2
 is_admin: false
 permissions:
   - 'access content overview'
