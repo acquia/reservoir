@@ -15,7 +15,13 @@ fact, you can make API requests right away!
 
 # How to install Reservoir
 
-[@todo composer instructions here!]
+The preferred way to install Reservoir is using our
+[Composer-based project template][template]. It's easy!
+
+```
+$ composer create-project acquia/reservior-project MY_PROJECT
+```
+
 
 
 # Concepts
@@ -71,3 +77,5 @@ That's it!
 - Ensure only users with the 'content_administrator' or 'client_developer' roles can log in.
 - Allow users with the 'client_developer' to create and edit roles other than 'client_administrator' and 'client_developer', and allow them only to grant+revoke non-restricted permissions. This then allows them to define roles (scopes) for clients.
 - Make it easy to delete all default content in one go: node 1, users 2, 3 and 4.
+
+[template]: https://github.com/acquia/reservoir-project "Composer-based project template"
