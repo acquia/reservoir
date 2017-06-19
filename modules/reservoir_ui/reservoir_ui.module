@@ -37,6 +37,7 @@ function reservoir_ui_help($route_name, \Drupal\Core\Routing\RouteMatchInterface
 function reservoir_ui_page_attachments(array &$page) {
   $page['#attached']['library'][] = 'reservoir_ui/welcome';
   $page['#attached']['library'][] = 'reservoir_ui/fix-2886816';
+  $page['#attached']['library'][] = 'reservoir_ui/fix-2887220';
 }
 
 function reservoir_ui_menu_local_actions_alter(&$local_actions) {
