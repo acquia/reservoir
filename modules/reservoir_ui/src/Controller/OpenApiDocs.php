@@ -62,6 +62,8 @@ class OpenApiDocs {
       'entity_view_mode',
       'base_field_override',
       'image_style',
+      // @todo Consider exposing managing of vocabularies in Reservoir UI, if the need arises.
+      'taxonomy_vocabulary',
 
       // Needed for authentication, only configurable through Reservoir's UI
       // (although oauth2_token content entities are of course created when
