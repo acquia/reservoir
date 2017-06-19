@@ -1,3 +1,11 @@
+reservoir_ui.home:
+  path: '/home'
+  defaults:
+    _controller: '\Drupal\reservoir_ui\Controller\Home::home'
+  methods: [GET]
+  requirements:
+    _user_is_logged_in: 'TRUE'
+
 reservoir_ui.api:
   path: '/admin/api'
   defaults:

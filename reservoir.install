@@ -19,8 +19,9 @@ use Drupal\user\Entity\User;
  * @see system_install()
  */
 function reservoir_install() {
-  // Set front page to "/admin".
-  \Drupal::configFactory()->getEditable('system.site')->set('page.front', '/admin/content')->save(TRUE);
+  // Set front page to "/home".
+  // @see \Drupal\reservoir_ui\Controller\Home::home()
+  \Drupal::configFactory()->getEditable('system.site')->set('page.front', '/home')->save(TRUE);
 
   // Allow visitor account creation with administrative approval.
   $user_settings = \Drupal::configFactory()->getEditable('user.settings');
