@@ -331,4 +331,9 @@ function _reservoir_ui_do_subrequest($url) {
 function reservoir_ui_entity_type_alter(array &$entity_types) {
   /** @var $entity_types \Drupal\Core\Entity\EntityTypeInterface[] */
   $entity_types['oauth2_client']->setLinkTemplate('canonical', '/client/{oauth2_client}');
+
+  // The System module provides the "Action" and "Menu" entity types, which
+  // Reservoir does not use at all. Remove them altogether: smaller API surface.
+  unset($entity_types['action']);
+  unset($entity_types['menu']);
 }

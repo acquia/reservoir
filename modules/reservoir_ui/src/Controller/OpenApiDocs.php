@@ -38,14 +38,42 @@ class OpenApiDocs {
     $options = [
       'entity_mode' => $entity_mode,
     ];
-    if ($entity_mode === 'content_entities') {
-      // Exclude content entities that are not related to the exposed data
-      // models.
-      $options['exclude'] = [
-        'oauth2_client',
-        'oauth2_token',
-      ];
-    }
+    // Quite a few entity types are only relevant in Reservoir's UI: they do not
+    // make sense to expose via APIs.
+    $options['exclude'] = [
+      // Needed for Drupal core, and even for Reservoir's UI. We cannot unset it
+      // in reservoir_ui_entity_type_alter().
+      'date_format',
+
+      // Needed only for Reservoir's UI.
+      'tour',
+
+      // Needed only for Reservoir's content editing UI.
+      'filter_format',
+      'editor',
+
+      // These are configurable, but only through Reservoir's UI. Note that we
+      // *do* expose field_config, field_storage_config and node_type, because
+      // those are necessary for building client-side UIs that change when the
+      // content model changes.
+      'entity_form_display',
+      'entity_view_display',
+      'entity_form_mode',
+      'entity_view_mode',
+      'base_field_override',
+      'image_style',
+
+      // Needed for authentication, only configurable through Reservoir's UI
+      // (although oauth2_token content entities are of course created when
+      // using OAuth2 authentication).
+      'user_role',
+      'oauth2_client',
+      'oauth2_token',
+      'oauth2_token_type',
+
+      // @todo remove dependency on block module.
+      'block',
+    ];
     return $this->generateDocsFromQuery(['options' => $options]);
   }
 
