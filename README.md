@@ -16,11 +16,18 @@ fact, you can make API requests right away!
 # How to install Reservoir
 
 The preferred way to install Reservoir is using our
-[Composer-based project template][template]. It's easy!
+[Composer-based project template][template]. 
 
+It's easy!
+
+1. [Install Composer][getcomposer]
+
+2. Create a Reservoir project with `composer`
 ```
-$ composer create-project acquia/reservior-project MY_PROJECT
+$ composer create-project acquia/reservoir-project MY_PROJECT --stability=alpha
 ```
+3. In your webhost configuration point my-project.com to [MY_PROJECT]/docroot
+4. Install Reservoir by going to *http://my-project.com*
 
 
 
@@ -79,3 +86,4 @@ That's it!
 - Make it easy to delete all default content in one go: node 1, users 2, 3 and 4.
 
 [template]: https://github.com/acquia/reservoir-project "Composer-based project template"
+[getcomposer]: https://getcomposer.org/ "Get Composer website"
