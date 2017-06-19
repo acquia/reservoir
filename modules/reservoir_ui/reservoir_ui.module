@@ -2,6 +2,7 @@
 
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Access\AccessResultForbidden;
+use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
 use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
 use Drupal\Core\Render\Markup;
@@ -336,4 +337,27 @@ function reservoir_ui_entity_type_alter(array &$entity_types) {
   // Reservoir does not use at all. Remove them altogether: smaller API surface.
   unset($entity_types['action']);
   unset($entity_types['menu']);
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function reservoir_ui_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if ($form_id === 'oauth2_client_add_form' || $form_id === 'oauth2_client_edit_form') {
+    // Unset the two reserved Reservoir UI roles.
+    unset($form['roles']['widget']['#options']['content_administrator']);
+    unset($form['roles']['widget']['#options']['client_developer']);
+    if (empty($form['roles']['widget']['#options'])) {
+      unset($form['roles']['widget']);
+    }
+
+    if ($form_id === 'oauth2_client_add_form' && empty($form['roles']['widget']['#options'])) {
+      drupal_set_message(t('Create a <a href=":tour">role</a> for every logical group of permissions you want to assign to a client.', [
+        ':tour' => Url::fromRoute('entity.user_role.collection')
+          ->setOption('query', ['tour' => TRUE])
+          ->toString()
+      ]), 'error');
+      $form['actions']['#disabled'] = TRUE;
+    }
+  }
 }
