@@ -10,5 +10,5 @@ is_admin: false
 permissions:
   - 'access content overview'
   # Administrative entity permissions.
-  - 'administer nodes'
+  - 'bypass node access'
   - 'administer taxonomy'
