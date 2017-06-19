@@ -73,8 +73,8 @@ function reservoir_install() {
   ])->save();
 
   // Create default content.
-  file_unmanaged_copy(\Drupal::root() . '/core/misc/druplicon.png', 'public://example.jpg');
-  $file = File::create(['uri' => 'public://example.jpg']);
+  file_unmanaged_copy(\Drupal::root() . '/' . drupal_get_path('profile', 'reservoir') . '/reservoir-logo.png', 'public://reservoir-logo.png');
+  $file = File::create(['uri' => 'public://reservoir-logo.png']);
   $file->save();
   $term = Term::create([
     'name' => 'Camelids',
@@ -89,6 +89,8 @@ function reservoir_install() {
     ],
     'field_image' => [
       [
+        'alt' => 'Reservoir logo: a "pancake stack" with layers of water instead of pancakes, to reference Drupal!',
+        'title' => 'Reservoir logo',
         'target_id' => $file->id(),
       ],
     ],
