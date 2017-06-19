@@ -19,9 +19,10 @@ The preferred way to install Reservoir is using our
 [Composer-based project template][template]. It's easy!
 
 ```
-$ composer create-project acquia/reservior-project MY_PROJECT
+$ composer create-project acquia/reservoir-project MY_PROJECT
 ```
 
+Depending on your local configuration, it may be necessary to add `--stability=dev` until such time as there is a stable release of the project.
 
 
 # Concepts
