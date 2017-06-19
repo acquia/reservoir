@@ -335,7 +335,8 @@ function reservoir_ui_entity_type_alter(array &$entity_types) {
 
   // The System module provides the "Action" and "Menu" entity types, which
   // Reservoir does not use at all. Remove them altogether: smaller API surface.
-  unset($entity_types['action']);
+  // @todo Because user_user_role_insert() assumes Action exists, it cannot be disabled.
+//  unset($entity_types['action']);
   unset($entity_types['menu']);
 }
 

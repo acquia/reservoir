@@ -45,6 +45,9 @@ class OpenApiDocs {
       // in reservoir_ui_entity_type_alter().
       'date_format',
 
+      // Needed for Drupal core's user_user_role_insert().
+      'action',
+
       // Needed only for Reservoir's UI.
       'tour',
 
