@@ -16,6 +16,7 @@
         "composer/installers": "^1.0",
         "drupal-composer/drupal-scaffold": "^2.0.0",
         "drupal/core": "~8.3.3",
+        "webflo/drupal-core-strict": "^8.3.3",
         "drupal/schemata": "1.x-dev#8325d172e1d6880aa24073f8f751ef089282cf9a",
         "drupal/openapi": "1.x-dev#e8a82f87dbbb83dc89f9455f7a2e5ba6c6d2cdff",
         "drupal/jsonapi": "1.0.0",
