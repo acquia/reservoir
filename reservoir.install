@@ -69,7 +69,9 @@ function reservoir_install() {
     'label' => 'Demo app',
     'secret' => 'foobar',
     'confidential' => TRUE,
-    'roles' => [],
+    'roles' => [
+      'client__own_articles',
+    ],
   ])->save();
 
   // Create default content.
