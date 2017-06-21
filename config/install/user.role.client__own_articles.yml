@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies: {  }
+id: client__own_articles
+label: 'CLIENT: own articles'
+weight: 4
+is_admin: null
+permissions:
+  - 'create article content'
+  - 'edit own article content'

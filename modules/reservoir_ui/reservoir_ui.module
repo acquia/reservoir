@@ -352,12 +352,16 @@ function reservoir_ui_form_alter(&$form, FormStateInterface $form_state, $form_i
       unset($form['roles']['widget']);
     }
 
+    $recommendation_text = t('Create a <a href=":tour">role</a> for every logical group of permissions you want to assign to a client.', [
+      ':tour' => Url::fromRoute('entity.user_role.collection')
+        ->setOption('query', ['tour' => TRUE])
+        ->toString()
+    ]);
+
+    $form['roles']['widget']['#description'] .= '<br>' . $recommendation_text;
+
     if ($form_id === 'oauth2_client_add_form' && empty($form['roles']['widget']['#options'])) {
-      drupal_set_message(t('Create a <a href=":tour">role</a> for every logical group of permissions you want to assign to a client.', [
-        ':tour' => Url::fromRoute('entity.user_role.collection')
-          ->setOption('query', ['tour' => TRUE])
-          ->toString()
-      ]), 'error');
+      drupal_set_message($recommendation_text, 'error');
       $form['actions']['#disabled'] = TRUE;
     }
   }
