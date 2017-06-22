@@ -80,8 +80,8 @@ That's it!
 
 There is a rapidly expanding ecosystem surrounding Reservoir:
 
-- **[reservoir-project](https://github.com/acquia/reservoir-project):** Composer installer for reservoir
-- **[reservoir-docker](https://github.com/mattgrill/reservoir-docker):** Docker image for reservoir
+- **[reservoir-project](https://github.com/acquia/reservoir-project):** Composer installer for Reservoir
+- **[reservoir-docker](https://github.com/mattgrill/reservoir-docker):** Docker image for Reservoir
 - **[well](https://github.com/damontgomery/well):** Drupal installation based on Reservoir and [BLT](https://github.com/acquia/blt)
 
 ## Future
