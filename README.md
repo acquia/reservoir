@@ -61,11 +61,11 @@ Before deploying Reservoir to production, delete demo material and change the
 keys.
 
 During installation, Reservoir creates four pieces of demo material:
-1. `/node/1` -> demo content, titled "Hello world"
-2. `/user/2` -> demo client user, called  `demo-user`
-3. `/user/3` -> demo content administrator, called `demo-writer`
-4. `/user/4` -> demo client developer, called `demo-developer`
-5. `/client/1` -> demo client, called `Demo app`
+1. `/node/1`: demo content, titled "Hello world"
+2. `/user/2`: demo client user, called  `demo-user`
+3. `/user/3`: demo content administrator, called `demo-writer`
+4. `/user/4`: demo client developer, called `demo-developer`
+5. `/client/1`: demo client, called `Demo app`
 
 (The password is identical to the user upon each installation.)
 
@@ -75,6 +75,14 @@ You'll want to:
 3. Refine CORS settings
 
 That's it!
+
+## Related projects
+
+There is a rapidly expanding ecosystem surrounding Reservoir:
+
+- **[reservoir-project](https://github.com/acquia/reservoir-project):** Composer installer for Reservoir
+- **[reservoir-docker](https://github.com/mattgrill/reservoir-docker):** Docker image for Reservoir
+- **[well](https://github.com/damontgomery/well):** Drupal installation based on Reservoir and [BLT](https://github.com/acquia/blt)
 
 ## Future
 
