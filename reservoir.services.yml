@@ -1,8 +1,8 @@
 parameters:
   cors.config:
     enabled: true
-    allowedHeaders: []
-    allowedMethods: []
+    allowedHeaders: ['*']
+    allowedMethods: ['GET', 'OPTIONS']
     allowedOrigins: ['*']
     exposedHeaders: false
     maxAge: false
