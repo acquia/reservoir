@@ -31,7 +31,6 @@ function reservoir_install() {
   if (function_exists('openssl_pkey_new')) {
     list($private_key, $public_key) = _reservoir_generate_keypair();
   }
-
   if (!empty($private_key) && !empty($public_key)) {
     $oauth_settings = \Drupal::configFactory()->getEditable('simple_oauth.settings');
     foreach (['private' => $private_key, 'public' => $public_key] as $kind => $key) {
@@ -117,7 +116,7 @@ function _reservoir_generate_keypair() {
   ));
 
   if (empty($pk_Generate)) {
-    return [ NULL, NULL ];
+    return [NULL, NULL];
   }
 
   // getting private-key
