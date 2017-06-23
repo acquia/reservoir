@@ -22,6 +22,9 @@
         "drupal/jsonapi": "1.0.0",
         "drupal/simple_oauth": "2.0-rc2"
     },
+    "require-dev": {
+        "roave/security-advisories": "dev-master"
+    },
     "scripts": {
         "post-install-cmd": [
             "@composer drupal-scaffold"
