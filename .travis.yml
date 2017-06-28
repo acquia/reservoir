@@ -11,9 +11,9 @@ env:
     - SIMPLETEST_BASE_URL="http://127.0.0.1:8080"
     - DRUSH_PATH="./../vendor/bin/drush"
   matrix:
-    - RELEASE=stable COMPOSER_CHANNEL=stable
+    #- RELEASE=stable COMPOSER_CHANNEL=stable
     - RELEASE=dev COMPOSER_CHANNEL=stable
-    - RELEASE=stable COMPOSER_CHANNEL=snapshot
+    #- RELEASE=stable COMPOSER_CHANNEL=snapshot
 
 before_install:
   - echo 'sendmail_path = /bin/true' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
@@ -31,7 +31,8 @@ script:
   - until curl -s $SIMPLETEST_BASE_URL; do true; done > /dev/null
   # Skip core/tests/Drupal/Tests/ComposerIntegrationTest.php because web/ has no composer.json
   # Ignore PageCache group temporarily, @see https://www.drupal.org/node/2770673
-  - ./../vendor/bin/phpunit -c core --testsuite unit --exclude-group Composer,DependencyInjection,PageCache
+  # Skip tests
+  #- ./../vendor/bin/phpunit -c core --testsuite unit --exclude-group Composer,DependencyInjection,PageCache
   - $DRUSH_PATH
   # No drupal console for now
   #- if [[ $RELEASE = stable ]]; then ./../vendor/bin/drupal; fi;
