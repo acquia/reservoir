@@ -1,6 +1,4 @@
 language: php
-dist: trusty
-sudo: false
 
 php:
   - 7.0
