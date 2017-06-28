@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/acquia/reservoir.svg?branch=8.x-1.x)](https://travis-ci.org/acquia/reservoir)
 ![Reservoir - Drupal distribution](https://raw.githubusercontent.com/acquia/reservoir/8.x-1.x/reservoir-logo.png)
 
 # Reservoir
