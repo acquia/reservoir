@@ -85,7 +85,7 @@ function reservoir_install() {
   $term->save();
   Node::create([
     'type' => 'article',
-    'body' => [
+    'field_body' => [
       'value' => 'The name "llama" was adopted by European settlers from native Peruvians.',
       'format' => 'basic_html',
     ],

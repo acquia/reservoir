@@ -2,12 +2,12 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.body
+    - field.storage.node.field_body
     - node.type.article
   module:
     - text
-id: node.article.body
-field_name: body
+id: node.article.field_body
+field_name: field_body
 entity_type: node
 bundle: article
 label: Body
