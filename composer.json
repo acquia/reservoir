@@ -21,6 +21,16 @@
         "drupal/jsonapi": "1.0.0",
         "drupal/simple_oauth": "2.0-rc2"
     },
+    "require-dev": {
+        "drush/drush": "~8.0",
+        "behat/mink": "~1.7",
+        "behat/mink-goutte-driver": "~1.2",
+        "jcalderonzumba/gastonjs": "~1.0.2",
+        "jcalderonzumba/mink-phantomjs-driver": "~0.3.1",
+        "mikey179/vfsstream": "~1.2",
+        "phpunit/phpunit": ">=4.8.28 <5",
+        "symfony/css-selector": "~2.8"
+    },
     "scripts": {
         "post-install-cmd": [
             "@composer drupal-scaffold"
