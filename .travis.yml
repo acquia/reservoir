@@ -3,15 +3,18 @@ language: php
 php:
   - 7.0
 
+# safelist
+branches:
+  only:
+  - 8.x-1.x
+
 env:
   global:
     - SIMPLETEST_DB=sqlite://tmp/site.sqlite
     - SIMPLETEST_BASE_URL="http://127.0.0.1:8080"
     - DRUSH_PATH="./vendor/bin/drush"
   matrix:
-    #- RELEASE=stable COMPOSER_CHANNEL=stable
     - RELEASE=dev COMPOSER_CHANNEL=stable
-    #- RELEASE=stable COMPOSER_CHANNEL=snapshot
 
 before_install:
   - echo 'sendmail_path = /bin/true' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
