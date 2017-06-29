@@ -91,9 +91,11 @@ If you're already deeply familiar with Drupal's concepts (such as entity types, 
 
 Reservoir limits itself to `node`s ("Content") and `node_type`s ("Content models"). These limitations make it simpler, more understandable, hence simplifying development, maintenance and the mental model.
 
-However, Reservoir still allows you to install any Drupal module to gradually add capabilities (if and when you need them): it's still Drupal under the hood. If you want the most complete Drupal experience, already preconfigured for decoupled use cases, we recommend you try [Contenta](http://www.contentacms.org/).
+However, Reservoir still allows you to install any Drupal module to gradually add capabilities (if and when you need them): it's still Drupal under the hood. If you want the most complete Drupal experience, already preconfigured for decoupled use cases, we recommend you try [Contenta](http://www.contentacms.org/) — it has "Recipe magazine" demo content with multiple demo apps and a "Knowledge Hub" with tutorials.
 
 Reservoir focuses on simplicity (but is limited). Contenta focuses on powerfulness & completeness (but has all of Drupal's complexity).
+
+You could start with Reservoir, move to Contenta to learn about concrete use cases, and with that new insight
 
 
 ## Future
