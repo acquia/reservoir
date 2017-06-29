@@ -93,7 +93,7 @@ Reservoir limits itself to `node`s ("Content") and `node_type`s ("Content models
 
 However, Reservoir still allows you to install any Drupal module to gradually add capabilities (if and when you need them): it's still Drupal under the hood. If you want the most complete Drupal experience, already preconfigured for decoupled use cases, we recommend you try [Contenta](http://www.contentacms.org/).
 
-Reservoir focuses on simplicity (but is limited). Contenta focuses on powerfulness & completeness (but has all of Drupal's copmlexity).
+Reservoir focuses on simplicity (but is limited). Contenta focuses on powerfulness & completeness (but has all of Drupal's complexity).
 
 
 ## Future
