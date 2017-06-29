@@ -95,7 +95,7 @@ However, Reservoir still allows you to install any Drupal module to gradually ad
 
 Reservoir focuses on simplicity (but is limited). Contenta focuses on powerfulness & completeness (but has all of Drupal's complexity).
 
-You could start with Reservoir, move to Contenta to learn about concrete use cases, and with that new insight
+You can start with Reservoir and expand your insights with Contenta's extensive examples. When starting a project, choose either Reservoir or Contenta, depending on the project's needs (use Contenta if you want vocabularies, comments, media …).
 
 
 ## Future
