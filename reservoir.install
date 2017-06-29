@@ -29,8 +29,10 @@ function reservoir_install() {
 
   // Generate initial, temporary keys, for a better onboarding experience.
   if (function_exists('openssl_pkey_new')) {
-    $oauth_settings = \Drupal::configFactory()->getEditable('simple_oauth.settings');
     list($private_key, $public_key) = _reservoir_generate_keypair();
+  }
+  if (!empty($private_key) && !empty($public_key)) {
+    $oauth_settings = \Drupal::configFactory()->getEditable('simple_oauth.settings');
     foreach (['private' => $private_key, 'public' => $public_key] as $kind => $key) {
       $path = sys_get_temp_dir() . '/' . sha1($key) . '.key';
       if (!file_exists($path) && !touch($path)) {
@@ -115,12 +117,16 @@ function _reservoir_generate_keypair() {
     'private_key_type' => OPENSSL_KEYTYPE_RSA
   ));
 
+  if (empty($pk_Generate)) {
+    return [NULL, NULL];
+  }
+
   // getting private-key
   openssl_pkey_export($pk_Generate, $pk_Generate_Private); // we pass 2nd argument as reference
 
   // getting public-key
   $pk_Generate_Details = openssl_pkey_get_details($pk_Generate);
-  $pk_Generate_Public = $pk_Generate_Details['key'];
+  $pk_Generate_Public = isset($pk_Generate_Details['key']) ? $pk_Generate_Details['key'] : NULL;
 
   // free resources
   openssl_pkey_free($pk_Generate);
