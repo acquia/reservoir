@@ -80,9 +80,6 @@ class ReservoirUiRouteSubscriber implements EventSubscriberInterface  {
           $route->setPath('/admin/models/add');
           $route->setDefault('_title', 'Add content model');
           break;
-        case 'entity.entity_form_display.node.default':
-          $route->setRequirement('_access', 'FALSE');
-          break;
         case 'entity.entity_view_display.node.default':
           $route->setRequirement('_access', 'FALSE');
           break;
