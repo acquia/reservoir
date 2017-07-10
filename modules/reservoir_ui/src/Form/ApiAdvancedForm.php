@@ -59,7 +59,7 @@ HTML;
     $form['jsonapi']['actions']['#type'] = 'actions';
     $form['jsonapi']['actions']['submit'] = [
       '#type' => 'submit',
-      '#value' => $this->t('JSON API already enabled!)'),
+      '#value' => $this->t('JSON API already enabled!'),
       '#disabled' => TRUE,
       '#button_type' => 'primary',
     ];
