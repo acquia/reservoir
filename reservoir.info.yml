@@ -30,7 +30,6 @@ dependencies:
   # Data: management.
   - ckeditor
   # Backend: management.
-  - config
   - dblog
   # Backend: UI.
   - reservoir_ui
