@@ -88,12 +88,12 @@ function reservoir_ui_toolbar_alter(&$items) {
   }
 
   if ($current_user->hasPermission('access openapi api docs')) {
-    $items['reservoir_api'] = array(
+    $items['reservoir_json_api'] = array(
       '#type' => 'toolbar_item',
       'tab' => array(
         '#type' => 'link',
-        '#title' => t('API'),
-        '#url' => Url::fromRoute('reservoir_ui.api'),
+        '#title' => t('JSON API'),
+        '#url' => Url::fromRoute('reservoir_ui.json_api'),
         '#options' => [
           'set_active_class' => TRUE,
         ],
@@ -105,7 +105,28 @@ function reservoir_ui_toolbar_alter(&$items) {
     );
   }
   else {
-    $items['reservoir_api'] = $empty_item_cacheability;
+    $items['reservoir_json_api'] = $empty_item_cacheability;
+  }
+
+  if ($current_user->hasPermission('use graphql voyager')) {
+    $items['reservoir_graphql'] = array(
+      '#type' => 'toolbar_item',
+      'tab' => array(
+        '#type' => 'link',
+        '#title' => t('GraphQL'),
+        '#url' => Url::fromRoute('graphql_voyager.voyager'),
+        '#options' => [
+          'set_active_class' => TRUE,
+        ],
+        '#attributes' => array(
+          'class' => array('toolbar-icon', 'toolbar-icon-system-modules-list'),
+        ),
+      ),
+      '#weight' => -30,
+    );
+  }
+  else {
+    $items['reservoir_graphql'] = $empty_item_cacheability;
   }
 
   if ($current_user->hasPermission('administer content types')) {

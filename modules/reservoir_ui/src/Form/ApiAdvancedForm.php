@@ -5,6 +5,11 @@ namespace Drupal\reservoir_ui\Form;
 use \Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 
+/**
+ * Administrative form to enable different API modules
+ *
+ * @todo Make this form actually turn on API modules remove the form.
+ */
 class ApiAdvancedForm extends FormBase {
 
   /**
@@ -102,7 +107,8 @@ HTML;
     $form['graphql']['actions']['#type'] = 'actions';
     $form['graphql']['actions']['submit'] = [
       '#type' => 'submit',
-      '#value' => $this->t('Enable GraphQL'),
+      '#value' => $this->t('GraphQL already enabled!'),
+      '#disabled' => TRUE,
       '#button_type' => 'primary',
     ];
 

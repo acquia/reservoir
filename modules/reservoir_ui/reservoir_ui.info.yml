@@ -8,3 +8,5 @@ required: true
 dependencies:
   - reservoir
   - jsonapi
+  - graphql
+  - graphql

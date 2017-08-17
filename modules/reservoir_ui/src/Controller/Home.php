@@ -44,7 +44,7 @@ class Home implements ContainerInjectionInterface {
 
     $api_docs_access = AccessResult::allowedIfHasPermission($this->currentUser, 'access openapi api docs');
     if ($api_docs_access->isAllowed()) {
-      $redirect_url = Url::fromRoute('reservoir_ui.api')->toString(TRUE);
+      $redirect_url = Url::fromRoute('reservoir_ui.json_api')->toString(TRUE);
       return (new CacheableRedirectResponse($redirect_url->getGeneratedUrl()))
         ->addCacheableDependency($redirect_url)
         ->addCacheableDependency($content_access)
