@@ -40,7 +40,7 @@
     "extra": {
         "patches": {
             "drupal/core": {
-                "Fix toolbar active link handling": "https://www.drupal.org/files/issues/2885755-10.patch"
+                "Fix toolbar active link handling": "https://www.drupal.org/files/issues/2885755-13.patch"
             },
             "drupal/simple_oauth": {
                 "simple_oauth cannot be installed in an install profile without also installing simple_oauth_extras": "https://www.drupal.org/files/issues/2883862-11.patch"
