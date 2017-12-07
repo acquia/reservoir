@@ -15,8 +15,8 @@
         "cweagans/composer-patches": "^1.5.0",
         "composer/installers": "1.2.0",
         "drupal-composer/drupal-scaffold": "^2.0.0",
-        "drupal/core": "^8.3.4",
-        "webflo/drupal-core-strict": "^8.3.4",
+        "drupal/core": "^8.4.0",
+        "webflo/drupal-core-strict": "^8.4.0",
         "drupal/openapi": "1.0.0-alpha1",
         "drupal/jsonapi": "1.0.0",
         "drupal/simple_oauth": "2.0-rc2"
@@ -40,7 +40,7 @@
     "extra": {
         "patches": {
             "drupal/core": {
-                "Fix toolbar active link handling": "https://www.drupal.org/files/issues/2885755-2-8.3.x.patch"
+                "Fix toolbar active link handling": "https://www.drupal.org/files/issues/2885755-13.patch"
             },
             "drupal/simple_oauth": {
                 "simple_oauth cannot be installed in an install profile without also installing simple_oauth_extras": "https://www.drupal.org/files/issues/2883862-11.patch"
