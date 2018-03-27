@@ -38,7 +38,7 @@ reservoir_ui.api.advanced:
     _form: 'Drupal\reservoir_ui\Form\ApiAdvancedForm'
     _title: 'Advanced'
   requirements:
-    _access: 'TRUE'
+    _permission: 'access openapi api docs'
 
 # @see entity.node_type.edit_form
 reservoir_ui.entity.node_type.api:
