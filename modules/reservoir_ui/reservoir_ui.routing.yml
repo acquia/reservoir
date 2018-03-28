@@ -6,8 +6,8 @@ reservoir_ui.home:
   requirements:
     _user_is_logged_in: 'TRUE'
 
-reservoir_ui.api:
-  path: '/admin/api'
+reservoir_ui.json_api:
+  path: '/admin/json-api-docs'
   defaults:
     _controller: '\Drupal\reservoir_ui\Controller\OpenApiDocs::generateDocs'
     entity_mode: 'content_entities'
@@ -15,8 +15,8 @@ reservoir_ui.api:
   requirements:
     _permission: 'access openapi api docs'
 
-reservoir_ui.api.config:
-  path: '/admin/api/config'
+reservoir_ui.json_api.config:
+  path: '/admin/json-api-docs/config'
   defaults:
     _controller: '\Drupal\reservoir_ui\Controller\OpenApiDocs::generateDocs'
     entity_mode: 'config_entities'
@@ -24,8 +24,8 @@ reservoir_ui.api.config:
   requirements:
     _permission: 'access openapi api docs'
 
-reservoir_ui.api.authentication:
-  path: '/admin/api/authentication'
+reservoir_ui.json_api.authentication:
+  path: '/admin/json-api-docs/authentication'
   defaults:
     _controller: '\Drupal\reservoir_ui\Controller\ApiAuthInfo::info'
   methods: [GET]
@@ -33,7 +33,7 @@ reservoir_ui.api.authentication:
     _permission: 'access openapi api docs'
 
 reservoir_ui.api.advanced:
-  path: '/admin/api/advanced'
+  path: '/admin/json-api-docs/advanced'
   defaults:
     _form: 'Drupal\reservoir_ui\Form\ApiAdvancedForm'
     _title: 'Advanced'

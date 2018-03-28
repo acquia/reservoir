@@ -49,7 +49,7 @@ class BundleApiLocalTask extends DeriverBase implements ContainerDeriverInterfac
     $this->derivatives["node_bundle_api"] = [
       'route_name' => 'reservoir_ui.entity.node_type.api',
       'weight' => 1,
-      'title' => $this->t('API'),
+      'title' => $this->t('JSON API'),
       'base_route' => $entity_type->get('field_ui_base_route'),
     ];
     return $this->derivatives;

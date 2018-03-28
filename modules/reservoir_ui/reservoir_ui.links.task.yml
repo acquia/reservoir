@@ -1,23 +1,23 @@
-reservoir_ui.api:
-  route_name: reservoir_ui.api
-  title: API
-  base_route: reservoir_ui.api
+reservoir_ui.json_api:
+  route_name: reservoir_ui.json_api
+  title: JSON API
+  base_route: reservoir_ui.json_api
 
-reservoir_ui.api.config:
-  route_name: reservoir_ui.api.config
+reservoir_ui.json_api.config:
+  route_name: reservoir_ui.json_api.config
   title: Configuration API
-  base_route: reservoir_ui.api
+  base_route: reservoir_ui.json_api
 
-reservoir_ui.api.authentication:
-  route_name: reservoir_ui.api.authentication
+reservoir_ui.json_api.authentication:
+  route_name: reservoir_ui.json_api.authentication
   title: Authentication
-  base_route: reservoir_ui.api
+  base_route: reservoir_ui.json_api
   weight: 90
 
 reservoir_ui.api.advanced:
   route_name: reservoir_ui.api.advanced
   title: Advanced
-  base_route: reservoir_ui.api
+  base_route: reservoir_ui.json_api
   weight: 100
 
 # @see field_ui.fields

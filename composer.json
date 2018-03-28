@@ -18,6 +18,7 @@
         "webflo/drupal-core-strict": "^8.4.0",
         "drupal/openapi": "1.0.0-alpha1",
         "drupal/jsonapi": "1.0.0",
+        "drupal/graphql": "3.0.0-alpha3",
         "drupal/simple_oauth": "2.0-rc2"
     },
     "require-dev": {

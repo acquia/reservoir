@@ -17,6 +17,8 @@ dependencies:
   - schemata
   - openapi
   - openapi_redoc
+  - graphql_content
+  - graphql_voyager
   # Data: modeling.
   - datetime
   - file
