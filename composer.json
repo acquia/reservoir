@@ -39,7 +39,8 @@
     "extra": {
         "patches": {
             "drupal/core": {
-                "Fix toolbar active link handling": "https://www.drupal.org/files/issues/2885755-13.patch"
+                "Fix toolbar active link handling": "https://www.drupal.org/files/issues/2885755-13.patch",
+                "Headless Drupal Views display plugin error": "https://www.drupal.org/files/issues/2018-04-01/view-no-displays-2957560-2.patch"
             },
             "drupal/simple_oauth": {
                 "simple_oauth cannot be installed in an install profile without also installing simple_oauth_extras": "https://www.drupal.org/files/issues/2883862-11.patch"
