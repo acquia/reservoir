@@ -258,10 +258,10 @@ function reservoir_ui_local_tasks_alter(&$local_tasks) {
 function reservoir_ui_node_view_alter(array &$build, NodeInterface $entity, EntityViewDisplayInterface $display) {
   // Retrieve JSON API representation of this node.
   $jsonapi_url = _reservoir_ui_get_node_jsonapi_url($entity);
-  $response_body = _reservoir_ui_do_subrequest($jsonapi_url)->getContent();
+  $normalized = \Drupal::service('jsonapi.entity.to_jsonapi')->normalize($entity);
 
   // Generate markup.
-  $json = json_encode(json_decode($response_body), JSON_PRETTY_PRINT);
+  $json = json_encode($normalized, JSON_PRETTY_PRINT);
   $markup = <<<HTML
 <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 <p><a href="$jsonapi_url"><code>$jsonapi_url</code></a></p>
@@ -299,31 +299,6 @@ function _reservoir_ui_get_node_jsonapi_url(NodeInterface $node) {
   return Url::fromRoute(sprintf('jsonapi.node--%s.individual', $node->bundle()), [
     'node' => $node->uuid(),
   ])->toString(TRUE)->getGeneratedUrl();
-}
-
-/**
- * Performs a subrequest.
- *
- * @param string $url
- *   The string to send a subrequest to.
- *
- * @return \Symfony\Component\HttpFoundation\Response
- *   The response.
- */
-function _reservoir_ui_do_subrequest($url) {
-  // Create a subrequest.
-  $request = \Drupal::request();
-  $subrequest = Request::create($url, 'GET', $request->query->all(), $request->cookies->all(), [], $request->server->all());
-  if ($session = $request->getSession()) {
-    $subrequest->setSession($session);
-  }
-
-  // Execute the subrequest.
-  $response = \Drupal::service('http_kernel')->handle($subrequest, HttpKernelInterface::SUB_REQUEST);
-  // @todo Remove this when https://www.drupal.org/node/2613044 lands.
-  \Drupal::requestStack()->pop();
-
-  return $response;
 }
 
 /**
